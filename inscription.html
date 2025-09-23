@@ -1,20 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-     <style>
-  .btn-retour {
-    padding: 8px 16px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  .btn-retour:hover {
-    background-color: #e0e0e0;
-  }
-</style>
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -196,6 +181,20 @@
             background: #e55a00;
         }
         
+        .btn-retour {
+            padding: 8px 16px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .btn-retour:hover {
+            background-color: #e0e0e0;
+        }
+        
         .registration-form {
             background: white;
             border-radius: 10px;
@@ -311,46 +310,6 @@
             border-radius: 5px;
             font-size: 1rem;
             min-height: 48px;
-        }
-        
-        .payment-section {
-            background: var(--light);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-left: 4px solid var(--primary);
-        }
-        
-        .payment-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 1rem;
-        }
-        
-        .payment-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-        }
-        
-        .payment-details h3 {
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .payment-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .payment-note {
-            background: #fff3e0;
-            padding: 10px 15px;
-            border-radius: 5px;
-            border-left: 3px solid var(--warning);
-            font-size: 0.9rem;
-            margin-top: 1rem;
         }
         
         .subscription-info {
@@ -479,10 +438,6 @@
                 gap: 15px;
             }
             
-            .payment-actions {
-                flex-direction: row;
-            }
-            
             .footer-content {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
@@ -553,7 +508,7 @@
         }
     </style>
 </head>
-    <button class="btn-retour" onclick="history.back()">← Retour</button>
+
 <body>
     <header>
         <div class="container">
@@ -578,6 +533,7 @@
 
     <section class="hero" id="accueil">
         <div class="container">
+            <button class="btn-retour" onclick="history.back()">← Retour</button>
             <div class="hero-content">
                 <h1>Devenez Conducteur TransTogo</h1>
                 <p>Rejoignez notre plateforme de transport multimodal au Togo et augmentez vos revenus.</p>
@@ -738,50 +694,16 @@
                         </select>
                     </div>
                     
-                    <!-- Section Paiement YAS T-Money -->
-                    <div class="payment-section">
-                        <div class="payment-info">
-                            <div class="payment-icon">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <div class="payment-details">
-                                <h3>Paiement de l'inscription</h3>
-                                <p><strong>Frais d'inscription : 2 000 FCFA</strong></p>
-                                <p>Paiement sécurisé via YAS T-Money</p>
-                            </div>
-                        </div>
-                        
-                        <div class="payment-actions">
-                            
-                            <a href="https://play.google.com/store/apps/details?id=tg.togocom.tmoney" 
-                               target="_blank" class="btn btn-outline">
-                                <i class="fas fa-download"></i> Télécharger YAS T-Money
-                            </a>
-                        </div>
-                        
-                        <div class="payment-note">
-                            <p><strong>Note importante :</strong> Le paiement de 2 000 FCFA est requis pour valider votre inscription.</p>
-                        </div>
-                        
-                        <div class="subscription-info">
-                            <p><strong>Abonnement mensuel :</strong> 2 000 FCFA tous les 30 jours pour maintenir votre compte actif.</p>
-                            <p>Vous recevrez un rappel 3 jours avant chaque échéance.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="yasPhone">Votre numéro YAS T-Money *</label>
-                        <input type="tel" id="yasPhone" placeholder="Votre numéro T-Money" required>
-                        <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">
-                            Ce numéro sera utilisé pour les paiements et les remboursements
-                        </p>
+                    <div class="subscription-info">
+                        <p><strong>Inscription gratuite :</strong> L'inscription à TransTogo est entièrement gratuite.</p>
+                        <p>Vous serez contacté par notre équipe pour finaliser votre inscription après soumission du formulaire.</p>
                     </div>
                     
                     <div class="form-group">
                         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
                             <input type="checkbox" id="acceptTerms" required>
                             <label for="acceptTerms" style="margin: 0;">
-                                J'accepte de payer 2 000 FCFA pour l'inscription et 2 000 FCFA mensuels pour maintenir mon compte
+                                J'accepte les conditions d'utilisation et la politique de confidentialité de TransTogo
                             </label>
                         </div>
                     </div>
@@ -887,11 +809,6 @@
             }
         };
 
-        // Variables globales
-        let paymentConfirmed = false;
-        const subscriptionAmount = 2000;
-        const subscriptionPeriod = 30; // jours
-
         // Initialisation de l'application
         document.addEventListener('DOMContentLoaded', function() {
             // Initialiser les menus
@@ -905,9 +822,6 @@
             
             // Initialiser le formulaire d'inscription
             initDriverForm();
-            
-            // Initialiser le bouton de paiement YAS
-            initYasPayment();
         });
 
         // Initialisation du menu mobile
@@ -1027,71 +941,9 @@
             driverForm.addEventListener('submit', submitDriverForm);
         }
 
-        // Initialisation du paiement YAS
-        function initYasPayment() {
-            const payButton = document.getElementById('payWithYas');
-            
-            payButton.addEventListener('click', function() {
-                const yasPhone = document.getElementById('yasPhone').value.trim();
-                
-                if (!yasPhone) {
-                    showNotification('Veuillez d\'abord saisir votre numéro YAS T-Money', 'error');
-                    return;
-                }
-                
-                if (!isValidPhoneNumber(yasPhone)) {
-                    showNotification('Veuillez saisir un numéro YAS T-Money valide', 'error');
-                    return;
-                }
-                
-                // Simuler le processus de paiement
-                processYasPayment(yasPhone);
-            });
-        }
-
-        // Simuler le processus de paiement YAS
-        function processYasPayment(yasPhone) {
-            showNotification('Traitement du paiement YAS T-Money...', 'info');
-            
-            // Simulation d'un délai de traitement
-            setTimeout(() => {
-                // Générer un numéro de transaction simulé
-                const transactionId = 'YAS' + Date.now().toString().slice(-8);
-                
-                paymentConfirmed = true;
-                
-                // Mettre à jour l'interface
-                const payButton = document.getElementById('payWithYas');
-                payButton.innerHTML = '<i class="fas fa-check"></i> Paiement confirmé (2 000 FCFA)';
-                payButton.style.background = 'var(--success)';
-                payButton.disabled = true;
-                
-                showNotification(`Paiement de 2 000 FCFA confirmé! Transaction: ${transactionId}`, 'success');
-                
-                // Calculer la date de prochain paiement
-                const nextPaymentDate = new Date();
-                nextPaymentDate.setDate(nextPaymentDate.getDate() + subscriptionPeriod);
-                
-                // Afficher les détails de l'abonnement
-                const subscriptionInfo = document.querySelector('.subscription-info');
-                subscriptionInfo.innerHTML = `
-                    <p><strong>Abonnement activé !</strong></p>
-                    <p>Prochain paiement : ${nextPaymentDate.toLocaleDateString('fr-FR')} (2 000 FCFA)</p>
-                    <p>Vous recevrez un rappel 3 jours avant l'échéance.</p>
-                `;
-                
-            }, 2000);
-        }
-
         // Soumettre le formulaire d'inscription
         function submitDriverForm(event) {
             event.preventDefault();
-            
-            // Vérifier si le paiement a été effectué
-            if (!paymentConfirmed) {
-                showNotification('Veuillez d\'abord effectuer le paiement de 2 000 FCFA', 'error');
-                return;
-            }
             
             // Récupérer les données du formulaire
             const formData = {
@@ -1110,41 +962,31 @@
                 availability: document.getElementById('availability').value,
                 description: document.getElementById('description').value.trim(),
                 reference: document.getElementById('reference').value,
-                yasPhone: document.getElementById('yasPhone').value.trim(),
                 documents: {
                     permis: document.getElementById('hasPermis').checked,
                     carte_grise: document.getElementById('hasCarteGrise').checked,
                     assurance: document.getElementById('hasAssurance').checked,
                     photo: document.getElementById('hasPhoto').checked
-                },
-                paymentConfirmed: paymentConfirmed,
-                subscriptionAmount: subscriptionAmount,
-                subscriptionPeriod: subscriptionPeriod
+                }
             };
             
             // Valider les données
             if (!formData.driverName || !formData.driverPhone || !formData.serviceType || 
                 !formData.vehicleModel || !formData.pricePerKm || !formData.experience ||
-                !formData.region || !formData.ville || !formData.commune || !formData.availability ||
-                !formData.yasPhone) {
+                !formData.region || !formData.ville || !formData.commune || !formData.availability) {
                 showNotification('Veuillez remplir tous les champs obligatoires', 'error');
                 return;
             }
             
-            // Valider les numéros de téléphone
+            // Valider le numéro de téléphone
             if (!isValidPhoneNumber(formData.driverPhone)) {
                 showNotification('Veuillez saisir un numéro de téléphone valide', 'error');
                 return;
             }
             
-            if (!isValidPhoneNumber(formData.yasPhone)) {
-                showNotification('Veuillez saisir un numéro YAS T-Money valide', 'error');
-                return;
-            }
-            
             // Vérifier l'acceptation des conditions
             if (!document.getElementById('acceptTerms').checked) {
-                showNotification('Veuillez accepter les conditions de paiement', 'error');
+                showNotification('Veuillez accepter les conditions d\'utilisation', 'error');
                 return;
             }
             
@@ -1170,20 +1012,6 @@
                 document.querySelectorAll('.service-btn').forEach(btn => btn.classList.remove('active'));
                 document.querySelector('.service-btn[data-service="moto"]').classList.add('active');
                 document.getElementById('serviceType').value = 'moto';
-                
-                // Réinitialiser le statut de paiement
-                paymentConfirmed = false;
-                const payButton = document.getElementById('payWithYas');
-                payButton.innerHTML = '<i class="fas fa-money-bill-wave"></i> Payer 2 000 FCFA via YAS';
-                payButton.style.background = '';
-                payButton.disabled = false;
-                
-                // Réinitialiser les informations d'abonnement
-                const subscriptionInfo = document.querySelector('.subscription-info');
-                subscriptionInfo.innerHTML = `
-                    <p><strong>Abonnement mensuel :</strong> 2 000 FCFA tous les 30 jours pour maintenir votre compte actif.</p>
-                    <p>Vous recevrez un rappel 3 jours avant chaque échéance.</p>
-                `;
             }, 3000);
         }
 
@@ -1200,10 +1028,6 @@
             const inscriptionDate = now.toLocaleDateString('fr-FR');
             const inscriptionTime = now.toLocaleTimeString('fr-FR');
             
-            // Calculer la date de prochain paiement
-            const nextPaymentDate = new Date();
-            nextPaymentDate.setDate(nextPaymentDate.getDate() + subscriptionPeriod);
-            
             let message = `🚗 *NOUVELLE INSCRIPTION CONDUCTEUR TRANSTOGO* 🚗\n\n`;
             message += `📅 *Date de l'inscription:* ${inscriptionDate} à ${inscriptionTime}\n\n`;
             
@@ -1213,7 +1037,6 @@
             if (formData.driverEmail) {
                 message += `• Email: ${formData.driverEmail}\n`;
             }
-            message += `• Numéro YAS T-Money: ${formData.yasPhone}\n`;
             message += `\n`;
             
             message += `🚙 *INFORMATIONS DU SERVICE*\n`;
@@ -1234,13 +1057,6 @@
             message += `• Région: ${formData.region.charAt(0).toUpperCase() + formData.region.slice(1)}\n`;
             message += `• Ville: ${formData.ville}\n`;
             message += `• Commune/Quartier: ${formData.commune}\n`;
-            message += `\n`;
-            
-            message += `💰 *INFORMATIONS DE PAIEMENT*\n`;
-            message += `• Frais d'inscription: 2 000 FCFA ✅ PAYÉ\n`;
-            message += `• Abonnement mensuel: 2 000 FCFA\n`;
-            message += `• Prochain paiement: ${nextPaymentDate.toLocaleDateString('fr-FR')}\n`;
-            message += `• Période: ${subscriptionPeriod} jours\n`;
             message += `\n`;
             
             if (formData.description) {
