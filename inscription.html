@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TransTogo - Inscription Conducteur</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #006747; /* Vert togolais */
+            --secondary: #FFCE00; /* Jaune togolais */
+            --accent: #D21034; /* Rouge togolais */
+            --light: #f5f5f5;
+            --dark: #333333;
+            --success: #28a745;
+            --warning: #ffc107;
+            --info: #17a2b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.6;
+            font-size: 14px;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #004d36);
+            color: white;
+            padding: 0.8rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            width: 95%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 8px;
+            font-size: 1.8rem;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            padding: 5px 8px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: rgba(255,255,255,0.1);
+            color: var(--secondary);
+        }
+        
+        section {
+            padding: 2.5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title h2 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 100%;
+            margin: 0 auto;
+            font-size: 0.95rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-align: center;
+            min-height: 44px;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn:hover, .btn:active {
+            background: #b00d2c;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover, .btn-secondary:active {
+            background: #e6b800;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover, .btn-outline:active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .registration-form {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            min-height: 48px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .form-row .form-group {
+            width: 100%;
+        }
+        
+        .service-selection {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-btn {
+            padding: 14px 10px;
+            background: white;
+            border: 2px solid var(--light);
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-align: center;
+            min-height: 70px;
+            font-size: 0.9rem;
+            flex-direction: column;
+        }
+        
+        .service-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .service-btn i {
+            font-size: 1.5rem;
+        }
+        
+        .location-selector {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+        
+        .location-filters {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-group {
+            width: 100%;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .filter-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            min-height: 48px;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 10px;
+            left: 10px;
+            padding: 15px 20px;
+            background: var(--success);
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(-100px);
+            transition: transform 0.3s;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+        }
+        
+        .notification.error {
+            background: var(--accent);
+        }
+        
+        .notification.warning {
+            background: var(--warning);
+            color: var(--dark);
+        }
+        
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #004d36;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Styles pour les écrans plus larges */
+        @media (min-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+            
+            .container {
+                width: 90%;
+                padding: 0 15px;
+            }
+            
+            .service-selection {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .service-btn {
+                flex-direction: row;
+                min-height: 60px;
+                font-size: 1rem;
+            }
+            
+            .location-filters {
+                flex-direction: row;
+            }
+            
+            .filter-group {
+                flex: 1;
+                min-width: 200px;
+            }
+            
+            .form-row {
+                flex-direction: row;
+                gap: 15px;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .notification {
+                right: 20px;
+                left: auto;
+                max-width: 400px;
+            }
+        }
+        
+        /* Améliorations pour Android */
+        @media (max-width: 767px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transform: translateY(-10px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            nav ul li {
+                margin: 0;
+            }
+            
+            nav ul li a {
+                padding: 12px 20px;
+                border-radius: 0;
+                justify-content: flex-start;
+            }
+            
+            section {
+                padding: 2rem 0;
+            }
+        }
+        
+        /* Optimisations pour le défilement sur Android */
+        html {
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+        
+        /* Éviter le zoom sur les champs de formulaire sur iOS */
+        @media screen and (max-width: 767px) {
+            input, select, textarea {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🚙</span>
+                    <span>TransTogo</span>
+                </div>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul>
+                        <li><a href="#accueil" class="active"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="#inscription"><i class="fas fa-user-plus"></i> Inscription</a></li>
+                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="accueil">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Devenez Conducteur TransTogo</h1>
+                <p>Rejoignez notre plateforme de transport multimodal au Togo et augmentez vos revenus.</p>
+                <a href="#inscription" class="btn">S'inscrire maintenant</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="inscription">
+        <div class="container">
+            <div class="section-title">
+                <h2>Formulaire d'inscription</h2>
+                <p>Remplissez ce formulaire pour devenir conducteur sur notre plateforme</p>
+            </div>
+            
+            <div class="registration-form">
+                <form id="driverForm">
+                    <div class="form-group">
+                        <label for="driverName">Nom complet *</label>
+                        <input type="text" id="driverName" placeholder="Votre nom et prénom" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="driverPhone">Numéro de téléphone *</label>
+                            <input type="tel" id="driverPhone" placeholder="Ex: +22890123456" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="driverEmail">Adresse email</label>
+                            <input type="email" id="driverEmail" placeholder="Votre adresse email">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Type de service proposé *</label>
+                        <div class="service-selection">
+                            <button type="button" class="service-btn active" data-service="moto">
+                                <i class="fas fa-motorcycle"></i> Moto (2 roues)
+                            </button>
+                            <button type="button" class="service-btn" data-service="tricycle">
+                                <i class="fas fa-shuttle-van"></i> Tricycle (3 roues)
+                            </button>
+                            <button type="button" class="service-btn" data-service="bagage">
+                                <i class="fas fa-truck-moving"></i> Taxi Bagage
+                            </button>
+                            <button type="button" class="service-btn" data-service="commun">
+                                <i class="fas fa-car-side"></i> Transport Commun
+                            </button>
+                        </div>
+                        <input type="hidden" id="serviceType" value="moto">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="vehicleModel">Modèle du véhicule *</label>
+                        <input type="text" id="vehicleModel" placeholder="Ex: Yamaha 125, Toyota Corolla" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="vehicleYear">Année du véhicule</label>
+                            <input type="number" id="vehicleYear" min="1990" max="2025" placeholder="Ex: 2020">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="vehicleColor">Couleur du véhicule</label>
+                            <input type="text" id="vehicleColor" placeholder="Ex: Rouge, Blanc">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pricePerKm">Prix proposé par km (FCFA) *</label>
+                        <input type="number" id="pricePerKm" min="50" max="2000" placeholder="Ex: 150" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Années d'expérience *</label>
+                        <input type="number" id="experience" min="0" max="50" placeholder="Nombre d'années" required>
+                    </div>
+                    
+                    <div class="location-selector">
+                        <h3 style="margin-bottom: 1rem; color: var(--primary);">Zone d'opération</h3>
+                        <div class="location-filters">
+                            <div class="filter-group">
+                                <label for="region">Région *</label>
+                                <select id="region" required>
+                                    <option value="">Sélectionnez une région</option>
+                                    <option value="maritime">Région Maritime</option>
+                                    <option value="plateaux">Région des Plateaux</option>
+                                    <option value="centrale">Région Centrale</option>
+                                    <option value="kara">Région de la Kara</option>
+                                    <option value="savanes">Région des Savanes</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="ville">Ville *</label>
+                                <select id="ville" required>
+                                    <option value="">Sélectionnez d'abord une région</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="commune">Commune/Quartier *</label>
+                                <select id="commune" required>
+                                    <option value="">Sélectionnez d'abord une ville</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="availability">Disponibilité *</label>
+                        <select id="availability" required>
+                            <option value="">Sélectionnez votre disponibilité</option>
+                            <option value="full-time">Temps plein (7j/7)</option>
+                            <option value="part-time">Temps partiel</option>
+                            <option value="weekdays">Semaine uniquement</option>
+                            <option value="weekends">Weekends uniquement</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Description de votre service</label>
+                        <textarea id="description" placeholder="Décrivez brièvement votre service, vos spécialités..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="documents">Documents disponibles</label>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <input type="checkbox" id="hasPermis" value="permis">
+                                Permis de conduire
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <input type="checkbox" id="hasCarteGrise" value="carte_grise">
+                                Carte grise
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <input type="checkbox" id="hasAssurance" value="assurance">
+                                Assurance
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <input type="checkbox" id="hasPhoto" value="photo">
+                                Photo d'identité
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reference">Comment avez-vous connu TransTogo?</label>
+                        <select id="reference">
+                            <option value="">Sélectionnez une option</option>
+                            <option value="ami">Par un ami/connaissance</option>
+                            <option value="reseaux_sociaux">Réseaux sociaux</option>
+                            <option value="publicite">Publicité</option>
+                            <option value="recherche">Recherche en ligne</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn" style="width: 100%;">
+                            <i class="fab fa-whatsapp"></i> Envoyer l'inscription par WhatsApp
+                        </button>
+                    </div>
+                    
+                    <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem;">
+                        En soumettant ce formulaire, vous acceptez nos <a href="#" style="color: var(--primary);">conditions d'utilisation</a> 
+                        et notre <a href="#" style="color: var(--primary);">politique de confidentialité</a>.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TransTogo</h3>
+                    <p>Service de réservation de transport multimodal au Togo. Rejoignez notre réseau de conducteurs professionnels.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#inscription">Inscription</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contactez-nous</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +228 92 87 16 05</li>
+                        <li><i class="fas fa-envelope"></i> contact@transtogo.tg</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Lomé, Togo</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 TransTogo. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Opération réussie!</span>
+    </div>
+
+    <script>
+        // Données des localités du Togo
+        const localitesTogo = {
+            "maritime": {
+                villes: ["Lomé", "Aného", "Tsévié", "Vogan"],
+                communes: {
+                    "Lomé": ["Agoè", "Bè", "Adidogomé", "Nyékonakpoè", "Tokoin", "Aflao Gakli"],
+                    "Aného": ["Aného Ville", "Aného Gare", "Agbodrafo"],
+                    "Tsévié": ["Tsévié Centre", "Kouvé", "Gbatopé"],
+                    "Vogan": ["Vogan Centre", "Anfoin", "Hévé"]
+                }
+            },
+            "plateaux": {
+                villes: ["Atakpamé", "Kpalimé", "Badou", "Notsè"],
+                communes: {
+                    "Atakpamé": ["Atakpamé Centre", "Ogou", "Amou"],
+                    "Kpalimé": ["Kpalimé Centre", "Agou", "Danyi"],
+                    "Badou": ["Badou Centre", "Akoumapé", "Amou-Oblo"],
+                    "Notsè": ["Notsè Centre", "Haho", "Tone"]
+                }
+            },
+            "centrale": {
+                villes: ["Sokodé", "Tchamba", "Sotouboua"],
+                communes: {
+                    "Sokodé": ["Sokodé Centre", "Tchaoudjo", "Tchalo"],
+                    "Tchamba": ["Tchamba Centre", "Alédjo", "Soudou"],
+                    "Sotouboua": ["Sotouboua Centre", "Tchawanda", "Bafilo"]
+                }
+            },
+            "kara": {
+                villes: ["Kara", "Bafilo", "Bassar", "Niamtougou"],
+                communes: {
+                    "Kara": ["Kara Centre", "Kozah", "Binah"],
+                    "Bafilo": ["Bafilo Centre", "Assoli", "Kéran"],
+                    "Bassar": ["Bassar Centre", "Bassar Ville", "Kabou"],
+                    "Niamtougou": ["Niamtougou Centre", "Doufelgou", "Préfecture de la Kozah"]
+                }
+            },
+            "savanes": {
+                villes: ["Dapaong", "Mango", "Cinkassé"],
+                communes: {
+                    "Dapaong": ["Dapaong Centre", "Tône", "Kpendjal"],
+                    "Mango": ["Mango Centre", "Oti", "Tandjoaré"],
+                    "Cinkassé": ["Cinkassé Centre", "Kpendjal-Ouest", "Tône-Ouest"]
+                }
+            }
+        };
+
+        // Initialisation de l'application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialiser les menus
+            initMenu();
+            
+            // Initialiser les sélecteurs de localisation
+            initLocationSelectors();
+            
+            // Initialiser les services
+            initServices();
+            
+            // Initialiser le formulaire d'inscription
+            initDriverForm();
+        });
+
+        // Initialisation du menu mobile
+        function initMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+            
+            // Fermer le menu quand on clique sur un lien
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                    
+                    // Mettre à jour l'onglet actif
+                    const currentActive = document.querySelector('nav a.active');
+                    if (currentActive) {
+                        currentActive.classList.remove('active');
+                    }
+                    this.classList.add('active');
+                    
+                    // Afficher la section correspondante
+                    const targetId = this.getAttribute('href').substring(1);
+                    showSection(targetId);
+                });
+            });
+        }
+
+        // Afficher une section spécifique
+        function showSection(sectionId) {
+            // Masquer toutes les sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Afficher la section demandée
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+        }
+
+        // Initialisation des sélecteurs de localisation
+        function initLocationSelectors() {
+            const regionSelect = document.getElementById('region');
+            const villeSelect = document.getElementById('ville');
+            const communeSelect = document.getElementById('commune');
+            
+            // Remplir les régions
+            for (const region in localitesTogo) {
+                const option = document.createElement('option');
+                option.value = region;
+                option.textContent = region.charAt(0).toUpperCase() + region.slice(1);
+                regionSelect.appendChild(option);
+            }
+            
+            // Écouter les changements de région
+            regionSelect.addEventListener('change', function() {
+                const region = this.value;
+                villeSelect.innerHTML = '<option value="">Sélectionnez une ville</option>';
+                communeSelect.innerHTML = '<option value="">Sélectionnez d\'abord une ville</option>';
+                
+                if (region && localitesTogo[region]) {
+                    localitesTogo[region].villes.forEach(ville => {
+                        const option = document.createElement('option');
+                        option.value = ville;
+                        option.textContent = ville;
+                        villeSelect.appendChild(option);
+                    });
+                }
+            });
+            
+            // Écouter les changements de ville
+            villeSelect.addEventListener('change', function() {
+                const region = regionSelect.value;
+                const ville = this.value;
+                communeSelect.innerHTML = '<option value="">Sélectionnez une commune</option>';
+                
+                if (region && ville && localitesTogo[region].communes[ville]) {
+                    localitesTogo[region].communes[ville].forEach(commune => {
+                        const option = document.createElement('option');
+                        option.value = commune;
+                        option.textContent = commune;
+                        communeSelect.appendChild(option);
+                    });
+                }
+            });
+        }
+
+        // Initialisation des services
+        function initServices() {
+            const serviceButtons = document.querySelectorAll('.service-btn');
+            const serviceTypeInput = document.getElementById('serviceType');
+            
+            serviceButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Retirer la classe active de tous les boutons
+                    serviceButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Ajouter la classe active au bouton cliqué
+                    this.classList.add('active');
+                    
+                    // Mettre à jour le champ caché
+                    const service = this.getAttribute('data-service');
+                    serviceTypeInput.value = service;
+                });
+            });
+        }
+
+        // Initialisation du formulaire d'inscription
+        function initDriverForm() {
+            // Écouter la soumission du formulaire
+            const driverForm = document.getElementById('driverForm');
+            driverForm.addEventListener('submit', submitDriverForm);
+        }
+
+        // Soumettre le formulaire d'inscription
+        function submitDriverForm(event) {
+            event.preventDefault();
+            
+            // Récupérer les données du formulaire
+            const formData = {
+                driverName: document.getElementById('driverName').value.trim(),
+                driverPhone: document.getElementById('driverPhone').value.trim(),
+                driverEmail: document.getElementById('driverEmail').value.trim(),
+                serviceType: document.getElementById('serviceType').value,
+                vehicleModel: document.getElementById('vehicleModel').value.trim(),
+                vehicleYear: document.getElementById('vehicleYear').value,
+                vehicleColor: document.getElementById('vehicleColor').value.trim(),
+                pricePerKm: document.getElementById('pricePerKm').value,
+                experience: document.getElementById('experience').value,
+                region: document.getElementById('region').value,
+                ville: document.getElementById('ville').value,
+                commune: document.getElementById('commune').value,
+                availability: document.getElementById('availability').value,
+                description: document.getElementById('description').value.trim(),
+                reference: document.getElementById('reference').value,
+                documents: {
+                    permis: document.getElementById('hasPermis').checked,
+                    carte_grise: document.getElementById('hasCarteGrise').checked,
+                    assurance: document.getElementById('hasAssurance').checked,
+                    photo: document.getElementById('hasPhoto').checked
+                }
+            };
+            
+            // Valider les données
+            if (!formData.driverName || !formData.driverPhone || !formData.serviceType || 
+                !formData.vehicleModel || !formData.pricePerKm || !formData.experience ||
+                !formData.region || !formData.ville || !formData.commune || !formData.availability) {
+                showNotification('Veuillez remplir tous les champs obligatoires', 'error');
+                return;
+            }
+            
+            // Valider le numéro de téléphone
+            if (!isValidPhoneNumber(formData.driverPhone)) {
+                showNotification('Veuillez saisir un numéro de téléphone valide', 'error');
+                return;
+            }
+            
+            // Préparer le message WhatsApp professionnel
+            const whatsappMessage = prepareWhatsAppMessage(formData);
+            
+            // Numéro WhatsApp de la plateforme
+            const whatsappNumber = "22892871605";
+            
+            // Ouvrir WhatsApp avec le message formaté
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Ouvrir dans un nouvel onglet
+            window.open(whatsappUrl, '_blank');
+            
+            // Afficher une confirmation
+            showNotification('Formulaire envoyé avec succès!', 'success');
+            
+            // Réinitialiser le formulaire après un délai
+            setTimeout(() => {
+                document.getElementById('driverForm').reset();
+                // Réinitialiser les boutons de service
+                document.querySelectorAll('.service-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelector('.service-btn[data-service="moto"]').classList.add('active');
+                document.getElementById('serviceType').value = 'moto';
+            }, 3000);
+        }
+
+        // Valider le numéro de téléphone
+        function isValidPhoneNumber(phone) {
+            // Format attendu: +228XXXXXXXX ou 228XXXXXXXX
+            const phoneRegex = /^(\+228|228)\d{8}$/;
+            return phoneRegex.test(phone.replace(/\s/g, ''));
+        }
+
+        // Préparer le message WhatsApp professionnel
+        function prepareWhatsAppMessage(formData) {
+            const now = new Date();
+            const inscriptionDate = now.toLocaleDateString('fr-FR');
+            const inscriptionTime = now.toLocaleTimeString('fr-FR');
+            
+            let message = `🚗 *NOUVELLE INSCRIPTION CONDUCTEUR TRANSTOGO* 🚗\n\n`;
+            message += `📅 *Date de l'inscription:* ${inscriptionDate} à ${inscriptionTime}\n\n`;
+            
+            message += `👤 *INFORMATIONS PERSONNELLES*\n`;
+            message += `• Nom complet: ${formData.driverName}\n`;
+            message += `• Téléphone: ${formData.driverPhone}\n`;
+            if (formData.driverEmail) {
+                message += `• Email: ${formData.driverEmail}\n`;
+            }
+            message += `\n`;
+            
+            message += `🚙 *INFORMATIONS DU SERVICE*\n`;
+            message += `• Type de service: ${getServiceLabel(formData.serviceType)}\n`;
+            message += `• Modèle du véhicule: ${formData.vehicleModel}\n`;
+            if (formData.vehicleYear) {
+                message += `• Année du véhicule: ${formData.vehicleYear}\n`;
+            }
+            if (formData.vehicleColor) {
+                message += `• Couleur du véhicule: ${formData.vehicleColor}\n`;
+            }
+            message += `• Prix proposé: ${formData.pricePerKm} FCFA/km\n`;
+            message += `• Expérience: ${formData.experience} an(s)\n`;
+            message += `• Disponibilité: ${getAvailabilityLabel(formData.availability)}\n`;
+            message += `\n`;
+            
+            message += `📍 *ZONE D'OPÉRATION*\n`;
+            message += `• Région: ${formData.region.charAt(0).toUpperCase() + formData.region.slice(1)}\n`;
+            message += `• Ville: ${formData.ville}\n`;
+            message += `• Commune/Quartier: ${formData.commune}\n`;
+            message += `\n`;
+            
+            if (formData.description) {
+                message += `📝 *DESCRIPTION DU SERVICE*\n`;
+                message += `${formData.description}\n`;
+                message += `\n`;
+            }
+            
+            message += `📄 *DOCUMENTS DISPONIBLES*\n`;
+            const documents = [];
+            if (formData.documents.permis) documents.push("Permis de conduire");
+            if (formData.documents.carte_grise) documents.push("Carte grise");
+            if (formData.documents.assurance) documents.push("Assurance");
+            if (formData.documents.photo) documents.push("Photo d'identité");
+            
+            if (documents.length > 0) {
+                message += `• ${documents.join('\n• ')}\n`;
+            } else {
+                message += `• Aucun document spécifié\n`;
+            }
+            message += `\n`;
+            
+            if (formData.reference) {
+                message += `🔍 *COMMENT A-T-IL CONNU TRANSTOGO?*\n`;
+                message += `• ${getReferenceLabel(formData.reference)}\n`;
+                message += `\n`;
+            }
+            
+            message += `_Merci de traiter cette demande d'inscription dans les plus brefs délais._`;
+            
+            return message;
+        }
+
+        // Obtenir le libellé du service
+        function getServiceLabel(service) {
+            const services = {
+                "moto": "Moto (2 roues)",
+                "tricycle": "Tricycle (3 roues)",
+                "bagage": "Taxi Bagage",
+                "commun": "Transport Commun"
+            };
+            return services[service] || service;
+        }
+
+        // Obtenir le libellé de disponibilité
+        function getAvailabilityLabel(availability) {
+            const availabilities = {
+                "full-time": "Temps plein (7j/7)",
+                "part-time": "Temps partiel",
+                "weekdays": "Semaine uniquement",
+                "weekends": "Weekends uniquement",
+                "flexible": "Flexible"
+            };
+            return availabilities[availability] || availability;
+        }
+
+        // Obtenir le libellé de référence
+        function getReferenceLabel(reference) {
+            const references = {
+                "ami": "Par un ami/connaissance",
+                "reseaux_sociaux": "Réseaux sociaux",
+                "publicite": "Publicité",
+                "recherche": "Recherche en ligne",
+                "autre": "Autre"
+            };
+            return references[reference] || reference;
+        }
+
+        // Afficher une notification
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.className = 'notification';
+            notification.classList.add(type);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
