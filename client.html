@@ -1,4 +1,2104 @@
-<!DOCTYPE html>
+<!<!DOCTYPE html>
+<html lang="fr">
+     <style>
+  .btn-retour {
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .btn-retour:hover {
+    background-color: #e0e0e0;
+  }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TransTogo - Service de Transport Multimodal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #006747; /* Vert togolais */
+            --secondary: #FFCE00; /* Jaune togolais */
+            --accent: #D21034; /* Rouge togolais */
+            --light: #f5f5f5;
+            --dark: #333333;
+            --success: #28a745;
+            --warning: #ffc107;
+            --info: #17a2b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.6;
+            font-size: 14px;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #004d36);
+            color: white;
+            padding: 0.8rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 8px;
+            font-size: 1.8rem;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            padding: 5px 8px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: rgba(255,255,255,0.1);
+            color: var(--secondary);
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1581793745861-98b075f964f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 100%;
+            text-align: center;
+            padding: 0 15px;
+        }
+        
+        .hero h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-align: center;
+            min-height: 44px;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn:hover, .btn:active {
+            background: #b00d2c;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover, .btn-secondary:active {
+            background: #e6b800;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover, .btn-outline:active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-payment {
+            background: #FF6B00;
+            color: white;
+        }
+        
+        .btn-payment:hover, .btn-payment:active {
+            background: #e55a00;
+        }
+        
+        section {
+            padding: 2.5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title h2 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 100%;
+            margin: 0 auto;
+            font-size: 0.95rem;
+        }
+        
+        .search-bar {
+            display: flex;
+            margin-bottom: 1.5rem;
+            max-width: 100%;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 14px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+            min-height: 48px;
+        }
+        
+        .search-bar button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            min-width: 50px;
+            min-height: 48px;
+        }
+        
+        .service-selection {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-btn {
+            padding: 14px 10px;
+            background: white;
+            border: 2px solid var(--light);
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-align: center;
+            min-height: 70px;
+            font-size: 0.9rem;
+            flex-direction: column;
+        }
+        
+        .service-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .service-btn i {
+            font-size: 1.5rem;
+        }
+        
+        .location-selector {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+        
+        .location-filters {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-group {
+            width: 100%;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .filter-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            min-height: 48px;
+        }
+        
+        .additional-filters {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+        
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .filter-option input {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .drivers-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .driver-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+        
+        .driver-card:active {
+            transform: translateY(-3px);
+        }
+        
+        .driver-header {
+            padding: 15px;
+            background: var(--light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .driver-type {
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .favorite-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .favorite-btn.active {
+            color: var(--accent);
+        }
+        
+        .driver-body {
+            padding: 15px;
+        }
+        
+        .driver-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .driver-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ddd;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #7f8c8d;
+            background: var(--light);
+            flex-shrink: 0;
+        }
+        
+        .driver-details h3 {
+            margin-bottom: 5px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        .driver-rating {
+            color: #f39c12;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .driver-price {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        
+        .driver-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .driver-contact button {
+            width: 100%;
+            min-height: 44px;
+        }
+        
+        .booking-form {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            min-height: 48px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .form-row .form-group {
+            width: 100%;
+        }
+        
+        .location-picker {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .location-picker button {
+            background: var(--light);
+            border: none;
+            padding: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 48px;
+            font-size: 1rem;
+        }
+        
+        .price-estimation {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .price-total {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-option.active {
+            border-color: var(--primary);
+            background-color: rgba(0, 103, 71, 0.05);
+        }
+        
+        .payment-option input {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .payment-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 10px;
+            left: 10px;
+            padding: 15px 20px;
+            background: var(--success);
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(-100px);
+            transition: transform 0.3s;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+        }
+        
+        .notification.error {
+            background: var(--accent);
+        }
+        
+        .notification.warning {
+            background: var(--warning);
+            color: var(--dark);
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .tab {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .history-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .history-info h4 {
+            margin-bottom: 5px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        .history-status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            align-self: flex-start;
+        }
+        
+        .status-completed {
+            background: #e8f5e9;
+            color: var(--success);
+        }
+        
+        .status-pending {
+            background: #fff3e0;
+            color: var(--warning);
+        }
+        
+        .status-cancelled {
+            background: #ffebee;
+            color: var(--accent);
+        }
+        
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #004d36;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Styles pour les écrans plus larges */
+        @media (min-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+            
+            .container {
+                width: 90%;
+                padding: 0 15px;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content {
+                text-align: left;
+                max-width: 600px;
+            }
+            
+            .service-selection {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .service-btn {
+                flex-direction: row;
+                min-height: 60px;
+                font-size: 1rem;
+            }
+            
+            .location-filters {
+                flex-direction: row;
+            }
+            
+            .filter-group {
+                flex: 1;
+                min-width: 200px;
+            }
+            
+            .additional-filters {
+                flex-direction: row;
+            }
+            
+            .drivers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+            
+            .driver-contact {
+                flex-direction: row;
+            }
+            
+            .form-row {
+                flex-direction: row;
+                gap: 15px;
+            }
+            
+            .location-picker {
+                flex-direction: row;
+            }
+            
+            .payment-options {
+                flex-direction: row;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .notification {
+                right: 20px;
+                left: auto;
+                max-width: 400px;
+            }
+        }
+        
+        /* Améliorations pour Android */
+        @media (max-width: 767px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transform: translateY(-10px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            nav ul li {
+                margin: 0;
+            }
+            
+            nav ul li a {
+                padding: 12px 20px;
+                border-radius: 0;
+                justify-content: flex-start;
+            }
+            
+            .hero {
+                height: 250px;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            section {
+                padding: 2rem 0;
+            }
+        }
+        
+        /* Optimisations pour le défilement sur Android */
+        html {
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+        
+        /* Éviter le zoom sur les champs de formulaire sur iOS */
+        @media screen and (max-width: 767px) {
+            input, select, textarea {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+    <button class="btn-retour" onclick="history.back()">← Retour</button>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🚙</span>
+                    <span>TransTogo</span>
+                </div>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul>
+                        <li><a href="#accueil" class="active"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="#reservation"><i class="fas fa-car"></i> Réservation</a></li>
+                        <li><a href="#historique"><i class="fas fa-history"></i> Historique</a></li>
+                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="accueil">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Service de Transport Multimodal au Togo</h1>
+                <p>Commandez facilement un transport adapté à vos besoins. Moto, tricycle, taxi bagage ou transport commun.</p>
+                <a href="#reservation" class="btn">Réserver maintenant</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="reservation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Réservez votre transport</h2>
+                <p>Sélectionnez votre type de service et votre localisation pour trouver les transporteurs disponibles</p>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Rechercher un transporteur par nom...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="service-selection">
+                <button class="service-btn active" data-service="moto">
+                    <i class="fas fa-motorcycle"></i> Moto (2 roues)
+                </button>
+                <button class="service-btn" data-service="tricycle">
+                    <i class="fas fa-shuttle-van"></i> Tricycle (3 roues)
+                </button>
+                <button class="service-btn" data-service="bagage">
+                    <i class="fas fa-truck-moving"></i> Taxi Bagage
+                </button>
+                <button class="service-btn" data-service="commun">
+                    <i class="fas fa-car-side"></i> Transport Commun
+                </button>
+            </div>
+            
+            <div class="location-selector">
+                <div class="location-filters">
+                    <div class="filter-group">
+                        <label for="region">Région</label>
+                        <select id="region">
+                            <option value="">Sélectionnez une région</option>
+                            <option value="maritime">Région Maritime</option>
+                            <option value="plateaux">Région des Plateaux</option>
+                            <option value="centrale">Région Centrale</option>
+                            <option value="kara">Région de la Kara</option>
+                            <option value="savanes">Région des Savanes</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="ville">Ville</label>
+                        <select id="ville">
+                            <option value="">Sélectionnez d'abord une région</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="commune">Commune/Quartier</label>
+                        <select id="commune">
+                            <option value="">Sélectionnez d'abord une ville</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="additional-filters">
+                    <div class="filter-option">
+                        <input type="checkbox" id="availableOnly" checked>
+                        <label for="availableOnly">Afficher seulement les transporteurs disponibles</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="favoritesOnly">
+                        <label for="favoritesOnly">Afficher seulement mes favoris</label>
+                    </div>
+                </div>
+                
+                <!-- Transporteurs Moto -->
+                <div id="drivers-moto" class="drivers-grid">
+                    <!-- Les cartes de transporteurs seront générées dynamiquement -->
+                </div>
+                
+                <!-- Transporteurs Tricycle -->
+                <div id="drivers-tricycle" class="drivers-grid hidden">
+                    <!-- Les cartes de transporteurs seront générées dynamiquement -->
+                </div>
+                
+                <!-- Transporteurs Taxi Bagage -->
+                <div id="drivers-bagage" class="drivers-grid hidden">
+                    <!-- Les cartes de transporteurs seront générées dynamiquement -->
+                </div>
+                
+                <!-- Transporteurs Commun -->
+                <div id="drivers-commun" class="drivers-grid hidden">
+                    <!-- Les cartes de transporteurs seront générées dynamiquement -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="historique" class="hidden">
+        <div class="container">
+            <div class="section-title">
+                <h2>Historique de vos réservations</h2>
+                <p>Retrouvez toutes vos réservations passées et en cours</p>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="en-cours">En cours</div>
+                <div class="tab" data-tab="terminees">Terminées</div>
+                <div class="tab" data-tab="annulees">Annulées</div>
+            </div>
+            
+            <div class="tab-content active" id="tab-en-cours">
+                <!-- Réservations en cours -->
+            </div>
+            
+            <div class="tab-content" id="tab-terminees">
+                <!-- Réservations terminées -->
+            </div>
+            
+            <div class="tab-content" id="tab-annulees">
+                <!-- Réservations annulées -->
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="hidden">
+        <div class="container">
+            <div class="section-title">
+                <h2>Formulaire de réservation</h2>
+                <p>Remplissez les détails de votre course</p>
+            </div>
+            
+            <div class="booking-form">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="driverName">Transporteur sélectionné</label>
+                        <input type="text" id="driverName" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="serviceType">Type de service</label>
+                        <input type="text" id="serviceType" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pricePerKm">Prix par km</label>
+                        <input type="text" id="pricePerKm" readonly>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerName">Votre nom complet</label>
+                            <input type="text" id="customerName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customerPhone">Votre numéro de téléphone</label>
+                            <input type="tel" id="customerPhone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pickupLocation">Lieu de prise en charge</label>
+                        <div class="location-picker">
+                            <input type="text" id="pickupLocation" placeholder="Adresse de prise en charge" required>
+                            <button type="button" id="getLocationBtn"><i class="fas fa-map-marker-alt"></i> Ma position</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" id="destination" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="distance">Distance estimée (km)</label>
+                            <input type="number" id="distance" min="1" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="deliveryTime">Délai de livraison (minutes)</label>
+                            <input type="number" id="deliveryTime" min="5" required>
+                        </div>
+                    </div>
+                    
+                    <div class="price-estimation">
+                        <h3>Estimation du prix</h3>
+                        <div class="price-row">
+                            <span>Prix de base:</span>
+                            <span id="basePrice">0 FCFA</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Frais de service (10%):</span>
+                            <span id="serviceFee">0 FCFA</span>
+                        </div>
+                        <div class="price-row price-total">
+                            <span>Total à payer:</span>
+                            <span id="totalPrice">0 FCFA</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Méthode de paiement</label>
+                        <div class="payment-options">
+                            <div class="payment-option active">
+                                <input type="radio" id="paymentCash" name="paymentMethod" value="cash" checked>
+                                <label for="paymentCash">
+                                    <i class="fas fa-money-bill-wave payment-icon"></i>
+                                    Paiement en espèces
+                                </label>
+                            </div>
+                            <div class="payment-option">
+                                <input type="radio" id="paymentYas" name="paymentMethod" value="yas">
+                                <label for="paymentYas">
+                                    <i class="fas fa-mobile-alt payment-icon"></i>
+                                    Paiement par YAS T-Money
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" id="yasPaymentSection" style="display: none;">
+                        <label for="yasPhone">Numéro YAS T-Money</label>
+                        <input type="tel" id="yasPhone" placeholder="Votre numéro T-Money">
+                        <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">
+                            <a href="https://play.google.com/store/apps/details?id=tg.togocom.tmoney" target="_blank" style="color: var(--primary);">
+                                Télécharger l'application YAS T-Money
+                            </a>
+                        </p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="advancePayment">Paiement d'avance (FCFA)</label>
+                        <input type="number" id="advancePayment" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Notes supplémentaires (optionnel)</label>
+                        <textarea id="notes" placeholder="Informations supplémentaires pour le transporteur..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn" style="width: 100%;">
+                            <i class="fab fa-whatsapp"></i> Envoyer la commande au conducteur
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TransTogo</h3>
+                    <p>Service de réservation de transport multimodal au Togo. Rapide, fiable et sécurisé.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#reservation">Réservation</a></li>
+                        <li><a href="#historique">Historique</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contactez-nous</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +228 92 87 16 05</li>
+                        <li><i class="fas fa-envelope"></i> contact@transtogo.tg</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Lomé, Togo</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 TransTogo. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Opération réussie!</span>
+    </div>
+
+    <script>
+        // Données des localités du Togo
+        const localitesTogo = {
+            "maritime": {
+                villes: ["Lomé", "Aného", "Tsévié", "Vogan"],
+                communes: {
+                    "Lomé": ["Agoè", "Bè", "Adidogomé", "Nyékonakpoè", "Tokoin", "Aflao Gakli"],
+                    "Aného": ["Aného Ville", "Aného Gare", "Agbodrafo"],
+                    "Tsévié": ["Tsévié Centre", "Kouvé", "Gbatopé"],
+                    "Vogan": ["Vogan Centre", "Anfoin", "Hévé"]
+                }
+            },
+            "plateaux": {
+                villes: ["Atakpamé", "Kpalimé", "Badou", "Notsè"],
+                communes: {
+                    "Atakpamé": ["Atakpamé Centre", "Ogou", "Amou"],
+                    "Kpalimé": ["Kpalimé Centre", "Agou", "Danyi"],
+                    "Badou": ["Badou Centre", "Akoumapé", "Amou-Oblo"],
+                    "Notsè": ["Notsè Centre", "Haho", "Tone"]
+                }
+            },
+            "centrale": {
+                villes: ["Sokodé", "Tchamba", "Sotouboua"],
+                communes: {
+                    "Sokodé": ["Sokodé Centre", "Tchaoudjo", "Tchalo"],
+                    "Tchamba": ["Tchamba Centre", "Alédjo", "Soudou"],
+                    "Sotouboua": ["Sotouboua Centre", "Tchawanda", "Bafilo"]
+                }
+            },
+            "kara": {
+                villes: ["Kara", "Bafilo", "Bassar", "Niamtougou"],
+                communes: {
+                    "Kara": ["Kara Centre", "Kozah", "Binah"],
+                    "Bafilo": ["Bafilo Centre", "Assoli", "Kéran"],
+                    "Bassar": ["Bassar Centre", "Bassar Ville", "Kabou"],
+                    "Niamtougou": ["Niamtougou Centre", "Doufelgou", "Préfecture de la Kozah"]
+                }
+            },
+            "savanes": {
+                villes: ["Dapaong", "Mango", "Cinkassé"],
+                communes: {
+                    "Dapaong": ["Dapaong Centre", "Tône", "Kpendjal"],
+                    "Mango": ["Mango Centre", "Oti", "Tandjoaré"],
+                    "Cinkassé": ["Cinkassé Centre", "Kpendjal-Ouest", "Tône-Ouest"]
+                }
+            }
+        };
+
+        // Données des transporteurs avec localisation précise
+        const transporteurs = [
+            // Transporteurs Moto - Région Maritime
+            {
+                id: 1,
+                nom: "Koffi Mensah",
+                type: "moto",
+                prixKm: 150,
+                note: 4.8,
+                disponible: true,
+                telephone: "+22892871605",
+                whatsapp: "+22892871605", // Numéro WhatsApp du conducteur
+                description: "Transport rapide et sécurisé en moto",
+                region: "maritime",
+                ville: "Lomé",
+                commune: "Agoè",
+                vehicule: "Moto Yamaha 125",
+                experience: "3 ans"
+            },
+            {
+                id: 2,
+                nom: "Ayaovi Agbéko",
+                type: "moto",
+                prixKm: 120,
+                note: 4.5,
+                disponible: true,
+                telephone: "+22890123456",
+                whatsapp: "+22890123456",
+                description: "Service ponctuel et professionnel",
+                region: "maritime",
+                ville: "Lomé",
+                commune: "Bè",
+                vehicule: "Moto Honda 100",
+                experience: "2 ans"
+            },
+            {
+                id: 3,
+                nom: "Komlan Dossou",
+                type: "moto",
+                prixKm: 130,
+                note: 4.7,
+                disponible: false,
+                telephone: "+22891234567",
+                whatsapp: "+22891234567",
+                description: "Expérience de plus de 5 ans",
+                region: "maritime",
+                ville: "Tsévié",
+                commune: "Tsévié Centre",
+                vehicule: "Moto Suzuki 125",
+                experience: "5 ans"
+            },
+            
+            // Transporteurs Tricycle - Région des Plateaux
+            {
+                id: 4,
+                nom: "Togbui Adjo",
+                type: "tricycle",
+                prixKm: 300,
+                note: 4.6,
+                disponible: true,
+                telephone: "+22893345678",
+                whatsapp: "+22893345678",
+                description: "Idéal pour petits colis et courtes distances",
+                region: "plateaux",
+                ville: "Kpalimé",
+                commune: "Kpalimé Centre",
+                vehicule: "Tricycle Bajaj",
+                experience: "4 ans"
+            },
+            {
+                id: 5,
+                nom: "Kossi Améwou",
+                type: "tricycle",
+                prixKm: 280,
+                note: 4.4,
+                disponible: true,
+                telephone: "+22897789012",
+                whatsapp: "+22897789012",
+                description: "Service disponible 24h/24",
+                region: "plateaux",
+                ville: "Atakpamé",
+                commune: "Atakpamé Centre",
+                vehicule: "Tricycle TVS",
+                experience: "3 ans"
+            },
+            
+            // Transporteurs Taxi Bagage - Région Maritime
+            {
+                id: 6,
+                nom: "Taxi Bagage Togo",
+                type: "bagage",
+                prixKm: 500,
+                note: 4.9,
+                disponible: true,
+                telephone: "+22822212019",
+                whatsapp: "+22822212019",
+                description: "Transport de bagages et marchandises",
+                region: "maritime",
+                ville: "Lomé",
+                commune: "Nyékonakpoè",
+                vehicule: "Camionnette Toyota",
+                experience: "6 ans"
+            },
+            {
+                id: 7,
+                nom: "Déménagement Express",
+                type: "bagage",
+                prixKm: 450,
+                note: 4.7,
+                disponible: true,
+                telephone: "+22890987654",
+                whatsapp: "+22890987654",
+                description: "Service de déménagement professionnel",
+                region: "maritime",
+                ville: "Lomé",
+                commune: "Tokoin",
+                vehicule: "Camion 3.5t",
+                experience: "8 ans"
+            },
+            
+            // Transporteurs Commun - Multiples régions
+            {
+                id: 8,
+                nom: "Taxi Commun Lomé",
+                type: "commun",
+                prixKm: 100,
+                note: 4.3,
+                disponible: true,
+                telephone: "+22891112233",
+                whatsapp: "+22891112233",
+                description: "Transport économique pour tous",
+                region: "maritime",
+                ville: "Lomé",
+                commune: "Adidogomé",
+                vehicule: "Toyota Corolla",
+                experience: "5 ans"
+            },
+            {
+                id: 9,
+                nom: "Bus Urbain Kara",
+                type: "commun",
+                prixKm: 80,
+                note: 4.2,
+                disponible: true,
+                telephone: "+22892334455",
+                whatsapp: "+22892334455",
+                description: "Service régulier sur les axes principaux",
+                region: "kara",
+                ville: "Kara",
+                commune: "Kara Centre",
+                vehicule: "Minibus 15 places",
+                experience: "7 ans"
+            },
+            {
+                id: 10,
+                nom: "Transport Savanes",
+                type: "commun",
+                prixKm: 90,
+                note: 4.1,
+                disponible: true,
+                telephone: "+22894455667",
+                whatsapp: "+22894455667",
+                description: "Desserte région des Savanes",
+                region: "savanes",
+                ville: "Dapaong",
+                commune: "Dapaong Centre",
+                vehicule: "Bus 25 places",
+                experience: "10 ans"
+            }
+        ];
+
+        // Variables globales
+        let selectedDriver = null;
+        let currentPosition = null;
+        let currentService = "moto";
+
+        // Initialisation de l'application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialiser les menus
+            initMenu();
+            
+            // Initialiser les sélecteurs de localisation
+            initLocationSelectors();
+            
+            // Initialiser les services
+            initServices();
+            
+            // Initialiser les transporteurs
+            initDrivers();
+            
+            // Initialiser le formulaire de réservation
+            initBookingForm();
+            
+            // Initialiser les onglets
+            initTabs();
+            
+            // Afficher les transporteurs par défaut (moto)
+            showDrivers('moto');
+        });
+
+        // Initialisation du menu mobile
+        function initMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+            
+            // Fermer le menu quand on clique sur un lien
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                    
+                    // Mettre à jour l'onglet actif
+                    const currentActive = document.querySelector('nav a.active');
+                    if (currentActive) {
+                        currentActive.classList.remove('active');
+                    }
+                    this.classList.add('active');
+                    
+                    // Afficher la section correspondante
+                    const targetId = this.getAttribute('href').substring(1);
+                    showSection(targetId);
+                });
+            });
+        }
+
+        // Afficher une section spécifique
+        function showSection(sectionId) {
+            // Masquer toutes les sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Afficher la section demandée
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+        }
+
+        // Initialisation des sélecteurs de localisation
+        function initLocationSelectors() {
+            const regionSelect = document.getElementById('region');
+            const villeSelect = document.getElementById('ville');
+            const communeSelect = document.getElementById('commune');
+            
+            // Remplir les régions
+            for (const region in localitesTogo) {
+                const option = document.createElement('option');
+                option.value = region;
+                option.textContent = region.charAt(0).toUpperCase() + region.slice(1);
+                regionSelect.appendChild(option);
+            }
+            
+            // Écouter les changements de région
+            regionSelect.addEventListener('change', function() {
+                const region = this.value;
+                villeSelect.innerHTML = '<option value="">Sélectionnez une ville</option>';
+                communeSelect.innerHTML = '<option value="">Sélectionnez d\'abord une ville</option>';
+                
+                if (region && localitesTogo[region]) {
+                    localitesTogo[region].villes.forEach(ville => {
+                        const option = document.createElement('option');
+                        option.value = ville;
+                        option.textContent = ville;
+                        villeSelect.appendChild(option);
+                    });
+                }
+                
+                // Filtrer les transporteurs
+                filterDrivers();
+            });
+            
+            // Écouter les changements de ville
+            villeSelect.addEventListener('change', function() {
+                const region = regionSelect.value;
+                const ville = this.value;
+                communeSelect.innerHTML = '<option value="">Sélectionnez une commune</option>';
+                
+                if (region && ville && localitesTogo[region].communes[ville]) {
+                    localitesTogo[region].communes[ville].forEach(commune => {
+                        const option = document.createElement('option');
+                        option.value = commune;
+                        option.textContent = commune;
+                        communeSelect.appendChild(option);
+                    });
+                }
+                
+                // Filtrer les transporteurs
+                filterDrivers();
+            });
+            
+            // Écouter les changements de commune
+            communeSelect.addEventListener('change', function() {
+                filterDrivers();
+            });
+        }
+
+        // Initialisation des services
+        function initServices() {
+            const serviceButtons = document.querySelectorAll('.service-btn');
+            
+            serviceButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Retirer la classe active de tous les boutons
+                    serviceButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Ajouter la classe active au bouton cliqué
+                    this.classList.add('active');
+                    
+                    // Afficher les transporteurs correspondants
+                    const service = this.getAttribute('data-service');
+                    currentService = service;
+                    showDrivers(service);
+                });
+            });
+        }
+
+        // Initialisation des transporteurs
+        function initDrivers() {
+            // Rien à faire ici car les transporteurs sont affichés dynamiquement
+        }
+
+        // Afficher les transporteurs d'un service spécifique
+        function showDrivers(service) {
+            // Masquer toutes les grilles de transporteurs
+            document.querySelectorAll('.drivers-grid').forEach(grid => {
+                grid.classList.add('hidden');
+            });
+            
+            // Afficher la grille correspondante
+            const targetGrid = document.getElementById(`drivers-${service}`);
+            if (targetGrid) {
+                targetGrid.classList.remove('hidden');
+                
+                // Vider la grille
+                targetGrid.innerHTML = '';
+                
+                // Filtrer les transporteurs par service
+                const filteredDrivers = transporteurs.filter(driver => driver.type === service);
+                
+                if (filteredDrivers.length === 0) {
+                    targetGrid.innerHTML = `
+                        <div style="text-align: center; padding: 40px; color: #666;">
+                            <i class="fas fa-car" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                            <p>Aucun transporteur disponible pour ce service dans votre zone.</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Ajouter les transporteurs filtrés
+                filteredDrivers.forEach(driver => {
+                    const driverCard = createDriverCard(driver);
+                    targetGrid.appendChild(driverCard);
+                });
+            }
+            
+            // Appliquer les filtres supplémentaires
+            filterDrivers();
+        }
+
+        // Créer une carte de transporteur
+        function createDriverCard(driver) {
+            const card = document.createElement('div');
+            card.className = 'driver-card';
+            card.setAttribute('data-id', driver.id);
+            card.setAttribute('data-type', driver.type);
+            card.setAttribute('data-region', driver.region);
+            card.setAttribute('data-ville', driver.ville);
+            card.setAttribute('data-commune', driver.commune);
+            card.setAttribute('data-available', driver.disponible);
+            
+            // Étoiles pour la note
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= Math.floor(driver.note)) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i === Math.ceil(driver.note) && driver.note % 1 !== 0) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            
+            card.innerHTML = `
+                <div class="driver-header">
+                    <span class="driver-type">${getServiceLabel(driver.type)}</span>
+                    <span style="font-size: 0.8rem; color: #666;">${driver.ville}, ${driver.commune}</span>
+                    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="driver-body">
+                    <div class="driver-info">
+                        <div class="driver-avatar">
+                            <i class="fas fa-${getServiceIcon(driver.type)}"></i>
+                        </div>
+                        <div class="driver-details">
+                            <h3>${driver.nom}</h3>
+                            <div class="driver-rating">${stars} ${driver.note}</div>
+                            <div class="driver-price">${driver.prixKm} FCFA/km</div>
+                            <p>${driver.description}</p>
+                            <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">
+                                <i class="fas fa-car"></i> ${driver.vehicule} • ${driver.experience} d'expérience
+                            </p>
+                        </div>
+                    </div>
+                    <div class="driver-contact">
+                        <button class="btn btn-outline contact-btn">
+                            <i class="fas fa-phone"></i> Appeler
+                        </button>
+                        <button class="btn book-btn">
+                            <i class="fas fa-calendar-check"></i> Réserver
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Ajouter les événements
+            const favoriteBtn = card.querySelector('.favorite-btn');
+            favoriteBtn.addEventListener('click', function() {
+                this.querySelector('i').classList.toggle('far');
+                this.querySelector('i').classList.toggle('fas');
+                this.classList.toggle('active');
+                
+                showNotification('Transporteur ajouté aux favoris', 'success');
+            });
+            
+            const contactBtn = card.querySelector('.contact-btn');
+            contactBtn.addEventListener('click', function() {
+                window.open(`tel:${driver.telephone}`);
+            });
+            
+            const bookBtn = card.querySelector('.book-btn');
+            bookBtn.addEventListener('click', function() {
+                selectedDriver = driver;
+                showBookingForm();
+            });
+            
+            return card;
+        }
+
+        // Obtenir le libellé du service
+        function getServiceLabel(serviceType) {
+            const labels = {
+                'moto': 'Moto (2 roues)',
+                'tricycle': 'Tricycle (3 roues)',
+                'bagage': 'Taxi Bagage',
+                'commun': 'Transport Commun'
+            };
+            return labels[serviceType] || serviceType;
+        }
+
+        // Obtenir l'icône du service
+        function getServiceIcon(serviceType) {
+            const icons = {
+                'moto': 'motorcycle',
+                'tricycle': 'shuttle-van',
+                'bagage': 'truck-moving',
+                'commun': 'car-side'
+            };
+            return icons[serviceType] || 'car';
+        }
+
+        // Filtrer les transporteurs selon les critères
+        function filterDrivers() {
+            const region = document.getElementById('region').value;
+            const ville = document.getElementById('ville').value;
+            const commune = document.getElementById('commune').value;
+            const availableOnly = document.getElementById('availableOnly').checked;
+            const favoritesOnly = document.getElementById('favoritesOnly').checked;
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            
+            document.querySelectorAll('.driver-card').forEach(card => {
+                const cardRegion = card.getAttribute('data-region');
+                const cardVille = card.getAttribute('data-ville');
+                const cardCommune = card.getAttribute('data-commune');
+                const isAvailable = card.getAttribute('data-available') === 'true';
+                const driverName = card.querySelector('h3').textContent.toLowerCase();
+                
+                let shouldShow = true;
+                
+                // Filtre par localisation
+                if (region && cardRegion !== region) {
+                    shouldShow = false;
+                }
+                if (ville && cardVille !== ville) {
+                    shouldShow = false;
+                }
+                if (commune && cardCommune !== commune) {
+                    shouldShow = false;
+                }
+                
+                // Filtre par disponibilité
+                if (availableOnly && !isAvailable) {
+                    shouldShow = false;
+                }
+                
+                // Filtre par recherche textuelle
+                if (searchText && !driverName.includes(searchText)) {
+                    shouldShow = false;
+                }
+                
+                // Filtre par favoris (simulé)
+                if (favoritesOnly) {
+                    // Dans une vraie app, on vérifierait si le transporteur est dans les favoris
+                    const isFavorite = Math.random() > 0.5; // Simulation
+                    if (!isFavorite) {
+                        shouldShow = false;
+                    }
+                }
+                
+                // Appliquer le filtre
+                card.style.display = shouldShow ? 'block' : 'none';
+            });
+            
+            // Vérifier si aucun résultat
+            const visibleCards = document.querySelectorAll(`#drivers-${currentService} .driver-card[style=""]`);
+            if (visibleCards.length === 0) {
+                const targetGrid = document.getElementById(`drivers-${currentService}`);
+                const noResults = targetGrid.querySelector('.no-results');
+                if (!noResults) {
+                    const noResultsDiv = document.createElement('div');
+                    noResultsDiv.className = 'no-results';
+                    noResultsDiv.style.textAlign = 'center';
+                    noResultsDiv.style.padding = '40px';
+                    noResultsDiv.style.color = '#666';
+                    noResultsDiv.innerHTML = `
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <p>Aucun transporteur ne correspond à vos critères de recherche.</p>
+                    `;
+                    targetGrid.appendChild(noResultsDiv);
+                }
+            } else {
+                const noResults = document.querySelector('.no-results');
+                if (noResults) {
+                    noResults.remove();
+                }
+            }
+        }
+
+        // Initialisation du formulaire de réservation
+        function initBookingForm() {
+            // Écouter les changements de méthode de paiement
+            const paymentOptions = document.querySelectorAll('input[name="paymentMethod"]');
+            paymentOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    const yasSection = document.getElementById('yasPaymentSection');
+                    if (this.value === 'yas') {
+                        yasSection.style.display = 'block';
+                    } else {
+                        yasSection.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Écouter le bouton de géolocalisation
+            const getLocationBtn = document.getElementById('getLocationBtn');
+            getLocationBtn.addEventListener('click', getCurrentLocation);
+            
+            // Écouter les changements de distance pour mettre à jour le prix
+            const distanceInput = document.getElementById('distance');
+            distanceInput.addEventListener('input', updatePriceEstimation);
+            
+            // Écouter la soumission du formulaire
+            const bookingForm = document.getElementById('bookingForm');
+            bookingForm.addEventListener('submit', submitBooking);
+        }
+
+        // Afficher le formulaire de réservation
+        function showBookingForm() {
+            if (!selectedDriver) return;
+            
+            // Remplir les informations du transporteur
+            document.getElementById('driverName').value = selectedDriver.nom;
+            document.getElementById('serviceType').value = getServiceLabel(selectedDriver.type);
+            document.getElementById('pricePerKm').value = selectedDriver.prixKm + ' FCFA/km';
+            
+            // Mettre à jour l'estimation du prix
+            updatePriceEstimation();
+            
+            // Afficher la section de réservation
+            showSection('booking');
+            
+            // Scroll vers le formulaire
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Obtenir la position actuelle
+        function getCurrentLocation() {
+            if (navigator.geolocation) {
+                showNotification('Localisation en cours...', 'info');
+                
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        currentPosition = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        
+                        // Récupérer l'adresse à partir des coordonnées (simulation)
+                        const address = getAddressFromCoords(currentPosition.lat, currentPosition.lng);
+                        document.getElementById('pickupLocation').value = address;
+                        
+                        showNotification('Position détectée avec succès', 'success');
+                    },
+                    function(error) {
+                        console.error('Erreur de géolocalisation:', error);
+                        let errorMessage = 'Impossible de récupérer votre position';
+                        
+                        switch(error.code) {
+                            case error.PERMISSION_DENIED:
+                                errorMessage = 'Permission de géolocalisation refusée';
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                errorMessage = 'Position indisponible';
+                                break;
+                            case error.TIMEOUT:
+                                errorMessage = 'Délai de localisation dépassé';
+                                break;
+                        }
+                        
+                        showNotification(errorMessage, 'error');
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 60000
+                    }
+                );
+            } else {
+                showNotification('La géolocalisation n\'est pas supportée par votre navigateur', 'error');
+            }
+        }
+
+        // Simuler la récupération d'adresse à partir des coordonnées
+        function getAddressFromCoords(lat, lng) {
+            // Dans une vraie application, on utiliserait une API comme Google Maps Geocoding
+            // Pour l'instant, on retourne une adresse simulée basée sur les coordonnées
+            return `📍 Position GPS: ${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+        }
+
+        // Mettre à jour l'estimation du prix
+        function updatePriceEstimation() {
+            if (!selectedDriver) return;
+            
+            const distance = parseFloat(document.getElementById('distance').value) || 0;
+            const basePrice = distance * selectedDriver.prixKm;
+            const serviceFee = basePrice * 0.1; // 10% de frais de service
+            const totalPrice = basePrice + serviceFee;
+            
+            document.getElementById('basePrice').textContent = Math.round(basePrice) + ' FCFA';
+            document.getElementById('serviceFee').textContent = Math.round(serviceFee) + ' FCFA';
+            document.getElementById('totalPrice').textContent = Math.round(totalPrice) + ' FCFA';
+        }
+
+        // Soumettre la réservation
+        function submitBooking(event) {
+            event.preventDefault();
+            
+            if (!selectedDriver) {
+                showNotification('Aucun transporteur sélectionné', 'error');
+                return;
+            }
+            
+            // Récupérer les données du formulaire
+            const formData = {
+                driver: selectedDriver,
+                customerName: document.getElementById('customerName').value.trim(),
+                customerPhone: document.getElementById('customerPhone').value.trim(),
+                pickupLocation: document.getElementById('pickupLocation').value.trim(),
+                destination: document.getElementById('destination').value.trim(),
+                distance: document.getElementById('distance').value,
+                deliveryTime: document.getElementById('deliveryTime').value,
+                paymentMethod: document.querySelector('input[name="paymentMethod"]:checked').value,
+                yasPhone: document.getElementById('yasPhone').value.trim(),
+                advancePayment: document.getElementById('advancePayment').value,
+                notes: document.getElementById('notes').value.trim(),
+                position: currentPosition
+            };
+            
+            // Valider les données
+            if (!formData.customerName || !formData.customerPhone || !formData.pickupLocation || !formData.destination) {
+                showNotification('Veuillez remplir tous les champs obligatoires', 'error');
+                return;
+            }
+            
+            if (!formData.distance || formData.distance < 1) {
+                showNotification('Veuillez saisir une distance valide', 'error');
+                return;
+            }
+            
+            if (!formData.deliveryTime || formData.deliveryTime < 5) {
+                showNotification('Le délai de livraison doit être d\'au moins 5 minutes', 'error');
+                return;
+            }
+            
+            if (formData.paymentMethod === 'yas' && !formData.yasPhone) {
+                showNotification('Veuillez saisir votre numéro YAS T-Money', 'error');
+                return;
+            }
+            
+            // Préparer le message WhatsApp professionnel
+            const whatsappMessage = prepareWhatsAppMessage(formData);
+            
+            // Utiliser le numéro WhatsApp du conducteur sélectionné
+            const whatsappNumber = selectedDriver.whatsapp.replace(/\D/g, ''); // Nettoyer le numéro
+            
+            // Ouvrir WhatsApp avec le message formaté
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Ouvrir dans un nouvel onglet
+            window.open(whatsappUrl, '_blank');
+            
+            // Afficher une confirmation
+            showNotification(`Réservation envoyée à ${selectedDriver.nom}!`, 'success');
+            
+            // Réinitialiser le formulaire après un délai
+            setTimeout(() => {
+                document.getElementById('bookingForm').reset();
+                showSection('reservation');
+                selectedDriver = null;
+                currentPosition = null;
+            }, 3000);
+        }
+
+        // Préparer le message WhatsApp professionnel
+        function prepareWhatsAppMessage(formData) {
+            const now = new Date();
+            const reservationDate = now.toLocaleDateString('fr-FR');
+            const reservationTime = now.toLocaleTimeString('fr-FR');
+            
+            const totalPrice = (formData.distance * formData.driver.prixKm) * 1.1; // Prix + 10% de frais
+            
+            let message = `🚗 *NOUVELLE RÉSERVATION TRANSTOGO* 🚗\n\n`;
+            message += `📅 *Date de la réservation:* ${reservationDate} à ${reservationTime}\n\n`;
+            
+            message += `👤 *INFORMATIONS CLIENT*\n`;
+            message += `• Nom: ${formData.customerName}\n`;
+            message += `• Téléphone: ${formData.customerPhone}\n\n`;
+            
+            message += `🚙 *DÉTAILS DU SERVICE*\n`;
+            message += `• Transporteur: ${formData.driver.nom}\n`;
+            message += `• Type de service: ${getServiceLabel(formData.driver.type)}\n`;
+            message += `• Véhicule: ${formData.driver.vehicule}\n`;
+            message += `• Expérience: ${formData.driver.experience}\n\n`;
+            
+            message += `📍 *ITINÉRAIRE*\n`;
+            message += `• Départ: ${formData.pickupLocation}\n`;
+            message += `• Destination: ${formData.destination}\n`;
+            message += `• Distance: ${formData.distance} km\n`;
+            message += `• Délai estimé: ${formData.deliveryTime} minutes\n\n`;
+            
+            message += `💰 *DÉTAILS TARIFAIRES*\n`;
+            message += `• Prix/km: ${formData.driver.prixKm} FCFA\n`;
+            message += `• Prix de base: ${(formData.distance * formData.driver.prixKm).toFixed(0)} FCFA\n`;
+            message += `• Frais de service (10%): ${(formData.distance * formData.driver.prixKm * 0.1).toFixed(0)} FCFA\n`;
+            message += `• *TOTAL: ${totalPrice.toFixed(0)} FCFA*\n\n`;
+            
+            message += `💳 *INFORMATIONS DE PAIEMENT*\n`;
+            message += `• Méthode: ${formData.paymentMethod === 'cash' ? 'Espèces 💵' : 'YAS T-Money 📱'}\n`;
+            if (formData.paymentMethod === 'yas') {
+                message += `• Numéro T-Money: ${formData.yasPhone}\n`;
+            }
+            message += `• Avance: ${formData.advancePayment || 0} FCFA\n\n`;
+            
+            if (formData.position) {
+                message += `🗺️ *COORDONNÉES GPS*\n`;
+                message += `• Latitude: ${formData.position.lat.toFixed(6)}\n`;
+                message += `• Longitude: ${formData.position.lng.toFixed(6)}\n`;
+                message += `• Lien Google Maps: https://maps.google.com/?q=${formData.position.lat},${formData.position.lng}\n\n`;
+            }
+            
+            if (formData.notes) {
+                message += `📝 *NOTES SUPPLÉMENTAIRES*\n`;
+                message += `${formData.notes}\n\n`;
+            }
+            
+            message += `🔔 *Ce message a été envoyé via la plateforme TransTogo*\n\n`;
+            message += `_Merci de confirmer cette réservation dans les plus brefs délais._`;
+            
+            return message;
+        }
+
+        // Initialisation des onglets
+        function initTabs() {
+            const tabs = document.querySelectorAll('.tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Retirer la classe active de tous les onglets
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Ajouter la classe active à l'onglet cliqué
+                    this.classList.add('active');
+                    
+                    // Masquer tous les contenus d'onglets
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Afficher le contenu correspondant
+                    const tabId = this.getAttribute('data-tab');
+                    const targetContent = document.getElementById(`tab-${tabId}`);
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Afficher une notification
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.className = 'notification';
+            notification.classList.add(type);
+            
+            // Afficher la notification
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            // Masquer la notification après 3 secondes
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Recherche de transporteurs
+        document.getElementById('searchInput').addEventListener('input', filterDrivers);
+        document.getElementById('searchBtn').addEventListener('click', filterDrivers);
+        
+        // Filtres supplémentaires
+        document.getElementById('availableOnly').addEventListener('change', filterDrivers);
+        document.getElementById('favoritesOnly').addEventListener('change', filterDrivers);
+        
+        // Navigation par ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                showSection(targetId);
+            });
+        });
+    </script>
+</body>
+</html>DOCTYPE html>
 <html lang="fr">
      <style>
   .btn-retour {
