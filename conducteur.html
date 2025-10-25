@@ -2,18 +2,21 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TaxiTogo - Connexion Conducteur</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --success: #2ecc71;
-            --warning: #f39c12;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
+            --primary: #006747; /* Vert togolais */
+            --secondary: #FFCE00; /* Jaune togolais */
+            --accent: #D21034; /* Rouge togolais */
+            --success: #28a745;
+            --warning: #ffc107;
+            --info: #17a2b8;
+            --light: #f5f5f5;
+            --dark: #333333;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --radius: 8px;
         }
         
         * {
@@ -21,10 +24,11 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary), #004d36);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -39,8 +43,8 @@
         
         .login-card {
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
             overflow: hidden;
         }
         
@@ -52,7 +56,7 @@
         }
         
         .logo {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -62,16 +66,16 @@
         
         .logo-icon {
             margin-right: 10px;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
         }
         
         .login-subtitle {
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.9;
         }
         
         .login-body {
-            padding: 30px;
+            padding: 25px;
         }
         
         .form-group {
@@ -83,21 +87,23 @@
             margin-bottom: 8px;
             font-weight: 600;
             color: var(--dark);
+            font-size: 0.95rem;
         }
         
         .form-group input {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 15px;
             border: 2px solid #e1e5e9;
-            border-radius: 8px;
+            border-radius: var(--radius);
             font-size: 1rem;
             transition: all 0.3s;
+            min-height: 48px;
         }
         
         .form-group input:focus {
             border-color: var(--secondary);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            box-shadow: 0 0 0 3px rgba(255, 206, 0, 0.1);
         }
         
         .password-container {
@@ -113,26 +119,36 @@
             border: none;
             color: #7f8c8d;
             cursor: pointer;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .btn {
             width: 100%;
             padding: 14px;
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius);
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         
         .btn-primary {
-            background: var(--secondary);
+            background: var(--accent);
             color: white;
         }
         
-        .btn-primary:hover {
-            background: #2980b9;
+        .btn-primary:hover, .btn-primary:active {
+            background: #b00d2c;
             transform: translateY(-2px);
         }
         
@@ -141,11 +157,13 @@
             margin-top: 20px;
             padding-top: 20px;
             border-top: 1px solid #ecf0f1;
+            font-size: 0.9rem;
         }
         
         .login-footer a {
-            color: var(--secondary);
+            color: var(--primary);
             text-decoration: none;
+            font-weight: 600;
         }
         
         .login-footer a:hover {
@@ -154,9 +172,12 @@
         
         .alert {
             padding: 12px 15px;
-            border-radius: 8px;
+            border-radius: var(--radius);
             margin-bottom: 20px;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .alert-error {
@@ -172,7 +193,7 @@
         }
         
         .hidden {
-            display: none;
+            display: none !important;
         }
         
         /* Styles pour l'application principale */
@@ -180,14 +201,14 @@
             width: 100%;
             max-width: 1200px;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
             overflow: hidden;
             min-height: 90vh;
         }
         
         .app-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), #004d36);
             color: white;
             padding: 1rem 0;
         }
@@ -212,31 +233,43 @@
             background: rgba(255,255,255,0.2);
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 10px 15px;
+            border-radius: var(--radius);
             cursor: pointer;
             margin-left: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            min-height: 44px;
+        }
+        
+        .logout-btn:active {
+            background: rgba(255,255,255,0.3);
         }
         
         .setup-form, .trip-card, .tracking-section, .payment-section, .receipts-section, .history-section {
             background: white;
-            border-radius: 10px;
+            border-radius: var(--radius);
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             padding: 20px;
             margin: 20px;
         }
         
         .section-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--primary);
             margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .form-row {
             display: flex;
-            gap: 15px;
+            flex-direction: column;
+            gap: 0;
         }
         
         .form-row .form-group {
@@ -245,21 +278,29 @@
         
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr;
+            gap: 15px;
             margin-bottom: 20px;
         }
         
         .info-card {
             background: var(--light);
             padding: 15px;
-            border-radius: 8px;
+            border-radius: var(--radius);
             border-left: 4px solid var(--secondary);
+        }
+        
+        .info-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-bottom: 20px;
         }
@@ -267,31 +308,39 @@
         .stat-card {
             background: var(--light);
             padding: 15px;
-            border-radius: 8px;
+            border-radius: var(--radius);
             text-align: center;
         }
         
         .controls {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             gap: 10px;
         }
         
         .btn-app {
-            display: inline-block;
-            padding: 12px 20px;
+            display: inline-flex;
+            padding: 14px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: var(--radius);
             cursor: pointer;
             font-size: 1rem;
             font-weight: 600;
             text-align: center;
             transition: all 0.3s;
             flex: 1;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 48px;
+        }
+        
+        .btn-app:active {
+            transform: translateY(-2px);
         }
         
         .btn-primary-app {
-            background: var(--secondary);
+            background: var(--primary);
             color: white;
         }
         
@@ -302,7 +351,7 @@
         
         .btn-warning-app {
             background: var(--warning);
-            color: white;
+            color: var(--dark);
         }
         
         .btn-accent-app {
@@ -318,11 +367,12 @@
         .btn:disabled {
             background: #bdc3c7;
             cursor: not-allowed;
+            transform: none !important;
         }
         
         .receipt {
             background: #f8f9fa;
-            border-radius: 8px;
+            border-radius: var(--radius);
             padding: 20px;
             margin-bottom: 20px;
             border: 2px dashed #dee2e6;
@@ -330,14 +380,15 @@
         
         .receipt-title {
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 20px;
             color: var(--primary);
+            font-weight: 700;
         }
         
         .receipt-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr;
             gap: 15px;
             margin-bottom: 20px;
         }
@@ -350,7 +401,7 @@
         }
         
         .receipt-total {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--success);
             border-top: 2px solid #dee2e6;
@@ -360,38 +411,40 @@
         
         .filters {
             display: flex;
+            flex-direction: column;
             gap: 15px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
         }
         
         .filter-group {
             flex: 1;
-            min-width: 200px;
         }
         
         .filter-group label {
             display: block;
             margin-bottom: 5px;
             font-weight: 600;
+            font-size: 0.95rem;
         }
         
         .filter-group select {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            min-height: 48px;
         }
         
         .receipts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr;
+            gap: 15px;
         }
         
         .receipt-card {
             background: var(--light);
-            border-radius: 8px;
+            border-radius: var(--radius);
             padding: 15px;
             border-left: 4px solid var(--secondary);
         }
@@ -415,6 +468,10 @@
         .receipt-card-details {
             font-size: 0.9rem;
             color: #666;
+        }
+        
+        .receipt-card-details div {
+            margin-bottom: 5px;
         }
         
         .history-item {
@@ -447,7 +504,7 @@
         }
         
         .trip-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
         }
         
@@ -455,6 +512,7 @@
             padding: 5px 10px;
             border-radius: 20px;
             font-size: 0.9rem;
+            font-weight: 600;
         }
         
         .status-active {
@@ -493,7 +551,7 @@
         }
         
         .stat-value {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary);
             margin: 10px 0;
@@ -506,7 +564,7 @@
         
         .map-integration {
             background: #e8f4fd;
-            border-radius: 8px;
+            border-radius: var(--radius);
             padding: 15px;
             margin-bottom: 20px;
             border-left: 4px solid var(--secondary);
@@ -514,16 +572,17 @@
         
         .map-buttons {
             display: flex;
+            flex-direction: column;
             gap: 10px;
             margin-bottom: 15px;
         }
         
         .map-btn {
             flex: 1;
-            padding: 12px;
+            padding: 14px;
             border: none;
-            border-radius: 5px;
-            background: var(--secondary);
+            border-radius: var(--radius);
+            background: var(--primary);
             color: white;
             font-weight: 600;
             cursor: pointer;
@@ -531,26 +590,31 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            min-height: 48px;
         }
         
-        .map-btn:hover {
-            background: #2980b9;
+        .map-btn:active {
+            background: #004d36;
         }
         
         .map-btn-whatsapp {
             background: #25D366;
         }
         
-        .map-btn-whatsapp:hover {
+        .map-btn-whatsapp:active {
             background: #128C7E;
         }
         
         .gps-status {
-            padding: 10px;
-            border-radius: 5px;
+            padding: 12px;
+            border-radius: var(--radius);
             margin-bottom: 15px;
             text-align: center;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         
         .gps-active {
@@ -579,7 +643,44 @@
             font-size: 0.9rem;
         }
         
-        @media (max-width: 768px) {
+        /* Styles pour les écrans plus larges */
+        @media (min-width: 768px) {
+            .form-row {
+                flex-direction: row;
+                gap: 15px;
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            
+            .controls {
+                flex-direction: row;
+            }
+            
+            .map-buttons {
+                flex-direction: row;
+            }
+            
+            .filters {
+                flex-direction: row;
+            }
+            
+            .receipts-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .receipt-details {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        /* Améliorations pour Android */
+        @media (max-width: 767px) {
             .header-content {
                 flex-direction: column;
                 text-align: center;
@@ -590,29 +691,35 @@
                 margin-top: 10px;
             }
             
-            .controls {
-                flex-direction: column;
+            .logout-btn {
+                margin-left: 0;
+                margin-top: 10px;
             }
             
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .setup-form, .trip-card, .tracking-section, .payment-section, .receipts-section, .history-section {
+                margin: 15px 10px;
+                padding: 15px;
             }
             
-            .form-row {
-                flex-direction: column;
-                gap: 0;
+            .section-title {
+                font-size: 1.2rem;
             }
             
-            .map-buttons {
-                flex-direction: column;
+            .stat-value {
+                font-size: 1.6rem;
             }
-            
-            .filters {
-                flex-direction: column;
-            }
-            
-            .receipts-grid {
-                grid-template-columns: 1fr;
+        }
+        
+        /* Optimisations pour le défilement sur Android */
+        html {
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+        
+        /* Éviter le zoom sur les champs de formulaire sur iOS */
+        @media screen and (max-width: 767px) {
+            input, select, textarea {
+                font-size: 16px !important;
             }
         }
     </style>
@@ -624,13 +731,16 @@
         <div class="login-card">
             <div class="login-header">
                 <div class="logo">
-                    <span class="logo-icon">🚕</span>
+                    <span class="logo-icon"><i class="fas fa-taxi"></i></span>
                     <span>TaxiTogo</span>
                 </div>
                 <div class="login-subtitle">Espace Conducteur</div>
             </div>
             <div class="login-body">
-                <div id="login-alert" class="alert alert-error hidden"></div>
+                <div id="login-alert" class="alert alert-error hidden">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="alert-message">Message d'erreur</span>
+                </div>
                 
                 <form id="login-form">
                     <div class="form-group">
@@ -665,7 +775,7 @@
         <div class="app-header">
             <div class="header-content">
                 <div class="logo">
-                    <span class="logo-icon">🚕</span>
+                    <span class="logo-icon"><i class="fas fa-taxi"></i></span>
                     <span>TaxiTogo</span>
                 </div>
                 <div class="driver-info">
@@ -683,11 +793,11 @@
             
             <div class="form-row">
                 <div class="form-group">
-                    <label for="driver-name">Nom du chauffeur</label>
+                    <label for="driver-name"><i class="fas fa-id-card"></i> Nom du chauffeur</label>
                     <input type="text" id="driver-name" value="Koffi Mensah" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="service-type">Type de service</label>
+                    <label for="service-type"><i class="fas fa-car"></i> Type de service</label>
                     <select id="service-type">
                         <option value="moto">Moto Taxi</option>
                         <option value="tricycle">Tricycle</option>
@@ -699,40 +809,40 @@
             
             <div class="form-row">
                 <div class="form-group">
-                    <label for="price-per-km">Prix par km (FCFA)</label>
+                    <label for="price-per-km"><i class="fas fa-tag"></i> Prix par km (FCFA)</label>
                     <input type="number" id="price-per-km" value="150" min="1">
                 </div>
                 <div class="form-group">
-                    <label for="extra-fees-input">Frais supplémentaires (FCFA)</label>
+                    <label for="extra-fees-input"><i class="fas fa-plus-circle"></i> Frais supplémentaires (FCFA)</label>
                     <input type="number" id="extra-fees-input" value="200" min="0">
                 </div>
             </div>
             
             <div class="form-row">
                 <div class="form-group">
-                    <label for="client-name">Nom du client</label>
+                    <label for="client-name"><i class="fas fa-user"></i> Nom du client</label>
                     <input type="text" id="client-name" placeholder="Entrez le nom du client">
                 </div>
                 <div class="form-group">
-                    <label for="client-phone">Téléphone du client</label>
+                    <label for="client-phone"><i class="fas fa-phone"></i> Téléphone du client</label>
                     <input type="text" id="client-phone" placeholder="+22890123456">
                 </div>
             </div>
             
             <div class="form-row">
                 <div class="form-group">
-                    <label for="start-address">Votre position actuelle</label>
+                    <label for="start-address"><i class="fas fa-map-marker-alt"></i> Votre position actuelle</label>
                     <input type="text" id="start-address" value="Position GPS" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="end-address">Adresse de destination</label>
+                    <label for="end-address"><i class="fas fa-flag-checkered"></i> Adresse de destination</label>
                     <input type="text" id="end-address" placeholder="Université de Lomé, Lomé, Togo">
                 </div>
             </div>
             
             <div class="controls">
                 <button class="btn-app btn-primary-app" id="start-trip-btn">
-                    <i class="fas fa-play"></i> Démarrer avec Google Maps
+                    <i class="fab fa-google"></i> Démarrer avec Google Maps
                 </button>
             </div>
         </div>
@@ -936,7 +1046,7 @@
             
             <div class="filters">
                 <div class="filter-group">
-                    <label for="filter-month">Mois</label>
+                    <label for="filter-month"><i class="fas fa-calendar"></i> Mois</label>
                     <select id="filter-month">
                         <option value="all">Tous les mois</option>
                         <option value="01">Janvier</option>
@@ -955,7 +1065,7 @@
                 </div>
                 
                 <div class="filter-group">
-                    <label for="filter-region">Région</label>
+                    <label for="filter-region"><i class="fas fa-map"></i> Région</label>
                     <select id="filter-region">
                         <option value="all">Toutes les régions</option>
                         <option value="maritime">Région Maritime</option>
@@ -967,7 +1077,7 @@
                 </div>
                 
                 <div class="filter-group">
-                    <label for="filter-locality">Localité</label>
+                    <label for="filter-locality"><i class="fas fa-map-marker-alt"></i> Localité</label>
                     <select id="filter-locality">
                         <option value="all">Toutes les localités</option>
                         <option value="lome">Lomé</option>
@@ -1077,7 +1187,11 @@
         function showAlert(message, type = 'error') {
             if (!loginAlert) return;
             
-            loginAlert.textContent = message;
+            const alertMessage = document.getElementById('alert-message');
+            if (alertMessage) {
+                alertMessage.textContent = message;
+            }
+            
             loginAlert.className = `alert alert-${type}`;
             loginAlert.classList.remove('hidden');
             
