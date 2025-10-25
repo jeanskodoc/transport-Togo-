@@ -15,6 +15,8 @@
             --success: #28a745;
             --warning: #ffc107;
             --info: #17a2b8;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --radius: 8px;
         }
         
         * {
@@ -37,7 +39,7 @@
             background: linear-gradient(135deg, var(--primary), #004d36);
             color: white;
             padding: 0.8rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -75,6 +77,15 @@
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
+            width: 44px;
+            height: 44px;
+            border-radius: 4px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .menu-toggle:active {
+            background-color: rgba(255,255,255,0.1);
         }
         
         nav ul {
@@ -95,8 +106,8 @@
             align-items: center;
             gap: 5px;
             font-size: 0.9rem;
-            padding: 5px 8px;
-            border-radius: 4px;
+            padding: 8px 12px;
+            border-radius: var(--radius);
         }
         
         nav ul li a:hover, nav ul li a.active {
@@ -126,22 +137,51 @@
             font-size: 0.95rem;
         }
         
+        .hero {
+            background: linear-gradient(rgba(0, 103, 71, 0.8), rgba(0, 77, 54, 0.8)), url('https://images.unsplash.com/photo-1581793745861-98b075f964f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 100%;
+            text-align: center;
+            padding: 0 15px;
+        }
+        
+        .hero h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
         .btn {
-            display: inline-block;
+            display: inline-flex;
             background: var(--accent);
             color: white;
-            padding: 12px 20px;
+            padding: 14px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: var(--radius);
             cursor: pointer;
             font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s;
             text-align: center;
-            min-height: 44px;
+            min-height: 48px;
             line-height: 1.2;
-            display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
@@ -182,13 +222,17 @@
         }
         
         .btn-retour {
-            padding: 8px 16px;
+            padding: 12px 16px;
             background-color: #f0f0f0;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: var(--radius);
             cursor: pointer;
             font-size: 14px;
             margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 44px;
         }
         
         .btn-retour:hover {
@@ -197,7 +241,7 @@
         
         .registration-form {
             background: white;
-            border-radius: 10px;
+            border-radius: var(--radius);
             padding: 1.5rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             max-width: 100%;
@@ -221,7 +265,7 @@
             width: 100%;
             padding: 14px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: var(--radius);
             font-size: 1rem;
             min-height: 48px;
         }
@@ -253,7 +297,7 @@
             padding: 14px 10px;
             background: white;
             border: 2px solid var(--light);
-            border-radius: 10px;
+            border-radius: var(--radius);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
@@ -279,7 +323,7 @@
         
         .location-selector {
             background: white;
-            border-radius: 10px;
+            border-radius: var(--radius);
             padding: 1.5rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             margin-bottom: 1.5rem;
@@ -307,18 +351,48 @@
             width: 100%;
             padding: 14px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: var(--radius);
             font-size: 1rem;
             min-height: 48px;
         }
         
         .subscription-info {
             background: #e8f5e9;
-            padding: 10px 15px;
-            border-radius: 5px;
-            border-left: 3px solid var(--success);
+            padding: 15px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--success);
             font-size: 0.9rem;
             margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .documents-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .document-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .document-option:active {
+            background-color: var(--light);
+        }
+        
+        .document-option input {
+            width: 20px;
+            height: 20px;
         }
         
         .hidden {
@@ -333,7 +407,7 @@
             padding: 15px 20px;
             background: var(--success);
             color: white;
-            border-radius: 5px;
+            border-radius: var(--radius);
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
             z-index: 1001;
             display: flex;
@@ -407,11 +481,27 @@
         @media (min-width: 768px) {
             body {
                 font-size: 16px;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+                flex-direction: column;
             }
             
             .container {
                 width: 90%;
                 padding: 0 15px;
+            }
+            
+            .hero {
+                height: 300px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
             }
             
             .service-selection {
@@ -438,6 +528,10 @@
                 gap: 15px;
             }
             
+            .documents-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
             .footer-content {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
@@ -452,7 +546,7 @@
         /* Améliorations pour Android */
         @media (max-width: 767px) {
             .menu-toggle {
-                display: block;
+                display: flex;
             }
             
             nav {
@@ -492,6 +586,20 @@
             section {
                 padding: 2rem 0;
             }
+            
+            .hero {
+                height: 200px;
+                margin: 0 10px 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .registration-form {
+                margin: 0 10px;
+                padding: 1.2rem;
+            }
         }
         
         /* Optimisations pour le défilement sur Android */
@@ -514,7 +622,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <span class="logo-icon">🚙</span>
+                    <span class="logo-icon"><i class="fas fa-shuttle-van"></i></span>
                     <span>TransTogo</span>
                 </div>
                 <button class="menu-toggle">
@@ -533,11 +641,11 @@
 
     <section class="hero" id="accueil">
         <div class="container">
-            <button class="btn-retour" onclick="history.back()">← Retour</button>
+            <button class="btn-retour" onclick="history.back()"><i class="fas fa-arrow-left"></i> Retour</button>
             <div class="hero-content">
                 <h1>Devenez Conducteur TransTogo</h1>
                 <p>Rejoignez notre plateforme de transport multimodal au Togo et augmentez vos revenus.</p>
-                <a href="#inscription" class="btn">S'inscrire maintenant</a>
+                <a href="#inscription" class="btn"><i class="fas fa-user-plus"></i> S'inscrire maintenant</a>
             </div>
         </div>
     </section>
@@ -552,24 +660,24 @@
             <div class="registration-form">
                 <form id="driverForm">
                     <div class="form-group">
-                        <label for="driverName">Nom complet *</label>
+                        <label for="driverName"><i class="fas fa-user"></i> Nom complet *</label>
                         <input type="text" id="driverName" placeholder="Votre nom et prénom" required>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="driverPhone">Numéro de téléphone *</label>
+                            <label for="driverPhone"><i class="fas fa-phone"></i> Numéro de téléphone *</label>
                             <input type="tel" id="driverPhone" placeholder="Ex: +22890123456" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="driverEmail">Adresse email</label>
+                            <label for="driverEmail"><i class="fas fa-envelope"></i> Adresse email</label>
                             <input type="email" id="driverEmail" placeholder="Votre adresse email">
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label>Type de service proposé *</label>
+                        <label><i class="fas fa-car"></i> Type de service proposé *</label>
                         <div class="service-selection">
                             <button type="button" class="service-btn active" data-service="moto">
                                 <i class="fas fa-motorcycle"></i> Moto (2 roues)
@@ -588,37 +696,39 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="vehicleModel">Modèle du véhicule *</label>
+                        <label for="vehicleModel"><i class="fas fa-car-alt"></i> Modèle du véhicule *</label>
                         <input type="text" id="vehicleModel" placeholder="Ex: Yamaha 125, Toyota Corolla" required>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="vehicleYear">Année du véhicule</label>
+                            <label for="vehicleYear"><i class="fas fa-calendar-alt"></i> Année du véhicule</label>
                             <input type="number" id="vehicleYear" min="1990" max="2025" placeholder="Ex: 2020">
                         </div>
                         
                         <div class="form-group">
-                            <label for="vehicleColor">Couleur du véhicule</label>
+                            <label for="vehicleColor"><i class="fas fa-palette"></i> Couleur du véhicule</label>
                             <input type="text" id="vehicleColor" placeholder="Ex: Rouge, Blanc">
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="pricePerKm">Prix proposé par km (FCFA) *</label>
+                        <label for="pricePerKm"><i class="fas fa-tag"></i> Prix proposé par km (FCFA) *</label>
                         <input type="number" id="pricePerKm" min="50" max="2000" placeholder="Ex: 150" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="experience">Années d'expérience *</label>
+                        <label for="experience"><i class="fas fa-graduation-cap"></i> Années d'expérience *</label>
                         <input type="number" id="experience" min="0" max="50" placeholder="Nombre d'années" required>
                     </div>
                     
                     <div class="location-selector">
-                        <h3 style="margin-bottom: 1rem; color: var(--primary);">Zone d'opération</h3>
+                        <h3 style="margin-bottom: 1rem; color: var(--primary); display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-map-marker-alt"></i> Zone d'opération
+                        </h3>
                         <div class="location-filters">
                             <div class="filter-group">
-                                <label for="region">Région *</label>
+                                <label for="region"><i class="fas fa-map"></i> Région *</label>
                                 <select id="region" required>
                                     <option value="">Sélectionnez une région</option>
                                     <option value="maritime">Région Maritime</option>
@@ -629,13 +739,13 @@
                                 </select>
                             </div>
                             <div class="filter-group">
-                                <label for="ville">Ville *</label>
+                                <label for="ville"><i class="fas fa-city"></i> Vile *</label>
                                 <select id="ville" required>
                                     <option value="">Sélectionnez d'abord une région</option>
                                 </select>
                             </div>
                             <div class="filter-group">
-                                <label for="commune">Commune/Quartier *</label>
+                                <label for="commune"><i class="fas fa-map-pin"></i> Commune/Quartier *</label>
                                 <select id="commune" required>
                                     <option value="">Sélectionnez d'abord une ville</option>
                                 </select>
@@ -644,7 +754,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="availability">Disponibilité *</label>
+                        <label for="availability"><i class="fas fa-clock"></i> Disponibilité *</label>
                         <select id="availability" required>
                             <option value="">Sélectionnez votre disponibilité</option>
                             <option value="full-time">Temps plein (7j/7)</option>
@@ -656,34 +766,34 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="description">Description de votre service</label>
+                        <label for="description"><i class="fas fa-file-alt"></i> Description de votre service</label>
                         <textarea id="description" placeholder="Décrivez brièvement votre service, vos spécialités..."></textarea>
                     </div>
                     
                     <div class="form-group">
-                        <label for="documents">Documents disponibles</label>
-                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                            <label style="display: flex; align-items: center; gap: 5px;">
+                        <label><i class="fas fa-file-contract"></i> Documents disponibles</label>
+                        <div class="documents-grid">
+                            <label class="document-option">
                                 <input type="checkbox" id="hasPermis" value="permis">
-                                Permis de conduire
+                                <i class="fas fa-id-card"></i> Permis de conduire
                             </label>
-                            <label style="display: flex; align-items: center; gap: 5px;">
+                            <label class="document-option">
                                 <input type="checkbox" id="hasCarteGrise" value="carte_grise">
-                                Carte grise
+                                <i class="fas fa-file-invoice"></i> Carte grise
                             </label>
-                            <label style="display: flex; align-items: center; gap: 5px;">
+                            <label class="document-option">
                                 <input type="checkbox" id="hasAssurance" value="assurance">
-                                Assurance
+                                <i class="fas fa-shield-alt"></i> Assurance
                             </label>
-                            <label style="display: flex; align-items: center; gap: 5px;">
+                            <label class="document-option">
                                 <input type="checkbox" id="hasPhoto" value="photo">
-                                Photo d'identité
+                                <i class="fas fa-camera"></i> Photo d'identité
                             </label>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="reference">Comment avez-vous connu TransTogo?</label>
+                        <label for="reference"><i class="fas fa-question-circle"></i> Comment avez-vous connu TransTogo?</label>
                         <select id="reference">
                             <option value="">Sélectionnez une option</option>
                             <option value="ami">Par un ami/connaissance</option>
@@ -695,14 +805,14 @@
                     </div>
                     
                     <div class="subscription-info">
-                        <p><strong>Inscription gratuite :</strong> L'inscription à TransTogo est entièrement gratuite.</p>
+                        <p><strong><i class="fas fa-info-circle"></i> Inscription gratuite :</strong> L'inscription à TransTogo est entièrement gratuite.</p>
                         <p>Vous serez contacté par notre équipe pour finaliser votre inscription après soumission du formulaire.</p>
                     </div>
                     
                     <div class="form-group">
-                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
-                            <input type="checkbox" id="acceptTerms" required>
-                            <label for="acceptTerms" style="margin: 0;">
+                        <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 1rem;">
+                            <input type="checkbox" id="acceptTerms" required style="margin-top: 3px;">
+                            <label for="acceptTerms" style="margin: 0; line-height: 1.4;">
                                 J'accepte les conditions d'utilisation et la politique de confidentialité de TransTogo
                             </label>
                         </div>
@@ -734,9 +844,9 @@
                 <div class="footer-section">
                     <h3>Liens rapides</h3>
                     <ul>
-                        <li><a href="#accueil">Accueil</a></li>
-                        <li><a href="#inscription">Inscription</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#accueil"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="#inscription"><i class="fas fa-user-plus"></i> Inscription</a></li>
+                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
                     </ul>
                 </div>
                 
