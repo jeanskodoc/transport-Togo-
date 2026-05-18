@@ -2,11 +2,17 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>TransTogo - Transport Multimodal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --primary: #008751;
             --primary-dark: #006b3f;
@@ -18,734 +24,582 @@
             --dark: #1a1a1a;
             --darker: #0a0a0a;
             --light: #f9f9f9;
-            --lighter: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 6px 18px rgba(0, 0, 0, 0.15);
-            --radius: 10px;
-            --transition: all 0.3s ease;
+            --white: #ffffff;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
+            --radius: 8px;
+            --radius-sm: 6px;
+            --transition: all 0.2s ease;
             --flag-gradient: linear-gradient(135deg, #008751 33%, #ffcc00 33% 66%, #ef2d2d 66%);
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-            font-size: 15px;
-        }
-        
+
         body {
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: var(--light);
             color: var(--dark);
-            line-height: 1.5;
+            line-height: 1.4;
             overflow-x: hidden;
         }
-        
+
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 12px;
         }
-        
-        /* Header */
+
+        /* Header compact */
         .main-header {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            padding: 12px 0;
+            padding: 8px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow);
         }
-        
+
         .header-flag {
-            height: 3px;
+            height: 2px;
             width: 100%;
             background: var(--flag-gradient);
             position: absolute;
             top: 0;
             left: 0;
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
+            gap: 6px;
             color: white;
         }
-        
+
         .logo-icon {
-            margin-right: 8px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--secondary);
         }
-        
-        .menu-toggle {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 8px 12px;
-            border-radius: 6px;
-            transition: var(--transition);
+
+        /* Onglets responsive - version compacte */
+        .main-tabs {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 52px;
+            z-index: 999;
         }
-        
-        .menu-toggle:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        /* Navigation mobile */
-        .mobile-nav {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 85%;
-            max-width: 300px;
-            height: 100vh;
-            background: var(--lighter);
-            z-index: 1100;
-            transition: var(--transition);
-            box-shadow: 4px 0 20px rgba(0,0,0,0.15);
-            overflow-y: auto;
-            padding: 15px;
-        }
-        
-        .mobile-nav.active {
-            left: 0;
-        }
-        
-        .nav-header {
+
+        .tabs-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--neutral);
+            gap: 2px;
+            padding: 6px 8px;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
         }
-        
-        .nav-close {
+
+        .tabs-container::-webkit-scrollbar {
+            height: 2px;
+        }
+
+        .tabs-container::-webkit-scrollbar-track {
             background: var(--neutral);
+        }
+
+        .tabs-container::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .tab-btn {
+            background: transparent;
             border: none;
-            font-size: 1.2rem;
+            padding: 8px 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
             color: var(--dark);
             cursor: pointer;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .nav-menu {
-            list-style: none;
-        }
-        
-        .nav-menu li {
-            margin-bottom: 3px;
-        }
-        
-        .nav-menu a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 15px;
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             transition: var(--transition);
-            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
-        
-        .nav-menu a:hover,
-        .nav-menu a.active {
+
+        .tab-btn i {
+            font-size: 0.85rem;
+        }
+
+        .tab-btn:hover {
+            background: var(--neutral);
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
         }
-        
-        .nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 1050;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
+
+        /* Contenu des onglets */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
         }
-        
-        .nav-overlay.active {
-            opacity: 1;
-            visibility: visible;
+
+        .tab-content.active {
+            display: block;
         }
-        
-        /* Section Hero */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections compactes */
+        section {
+            padding: 2rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 0.85rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Hero compact */
         .hero {
             background: linear-gradient(rgba(0, 135, 81, 0.92), rgba(0, 107, 63, 0.95)), url('https://images.unsplash.com/photo-1581793745861-98b075f964f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-            min-height: 75vh;
+            min-height: 45vh;
             display: flex;
             align-items: center;
             text-align: center;
             color: white;
-            padding: 40px 0;
+            border-radius: var(--radius);
+            margin-top: 0;
         }
-        
+
         .hero-content {
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
+            padding: 1rem;
         }
-        
+
         .hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 1.2rem;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
             line-height: 1.2;
-            font-weight: 700;
         }
-        
+
         .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
         }
-        
-        /* Boutons REDUITS */
+
+        /* Boutons compacts */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             background: linear-gradient(135deg, var(--accent), var(--accent-dark));
             color: white;
-            padding: 12px 20px;
+            padding: 8px 14px;
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 500;
             text-decoration: none;
             transition: var(--transition);
-            min-height: 45px;
-            width: 100%;
-            max-width: 220px;
-            margin: 8px auto;
-            box-shadow: 0 4px 12px rgba(239, 45, 45, 0.25);
+            min-height: 36px;
+            box-shadow: 0 2px 6px rgba(239, 45, 45, 0.2);
         }
-        
+
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(239, 45, 45, 0.35);
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(239, 45, 45, 0.3);
         }
-        
+
         .btn-secondary {
             background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
             color: var(--dark);
-            box-shadow: 0 4px 12px rgba(255, 204, 0, 0.25);
         }
-        
-        .btn-secondary:hover {
-            background: linear-gradient(135deg, var(--secondary-dark), #e6a800);
-        }
-        
+
         .btn-outline {
             background: transparent;
-            border: 2px solid white;
+            border: 1.5px solid white;
             color: white;
             box-shadow: none;
         }
-        
+
         .btn-outline:hover {
             background: white;
             color: var(--primary);
         }
-        
+
         .btn-payment {
             background: linear-gradient(135deg, #9C27B0, #7B1FA2);
-            box-shadow: 0 4px 12px rgba(156, 39, 176, 0.25);
         }
-        
-        .btn-payment:hover {
-            background: linear-gradient(135deg, #7B1FA2, #6a1b9a);
-        }
-        
+
         .btn-group {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 1.5rem 0;
-            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
         }
-        
-        /* Sections générales */
-        section {
-            padding: 3rem 0;
+
+        .btn-group .btn {
+            margin: 0;
+            flex: 0 1 auto;
+            min-width: 130px;
         }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
+
+        /* Grilles responsives */
+        .features,
+        .services-grid,
+        .user-selection {
+            display: grid;
+            gap: 1rem;
         }
-        
-        .section-title h2 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            font-weight: 700;
-        }
-        
-        .section-title p {
-            color: #666;
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Cartes */
-        .card {
-            background: var(--lighter);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        .feature-card {
-            text-align: center;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-        }
-        
-        .feature-card p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        /* Étapes */
-        .how-it-works {
-            background: linear-gradient(135deg, #f0f7f4, #e0efe8);
-        }
-        
+
         .steps {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
         }
-        
-        .step {
+
+        .feature-card,
+        .service-card,
+        .step,
+        .user-card {
             text-align: center;
-            background: white;
+            background: var(--white);
             border-radius: var(--radius);
-            padding: 1.5rem;
+            padding: 1rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
-        
-        .step:hover {
+
+        .feature-card:hover,
+        .service-card:hover,
+        .step:hover,
+        .user-card:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
         }
-        
+
+        .feature-icon,
+        .service-icon,
+        .user-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card h3,
+        .service-card h3,
+        .step h3,
+        .user-card h3 {
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .feature-card p,
+        .service-card p,
+        .step p,
+        .user-card p {
+            color: #666;
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
+
         .step-number {
-            width: 45px;
-            height: 45px;
+            width: 32px;
+            height: 32px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 0 auto 1rem;
-        }
-        
-        .step h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-        }
-        
-        .step p {
-            color: #666;
             font-size: 0.9rem;
+            font-weight: bold;
+            margin: 0 auto 0.6rem;
         }
-        
-        /* Services */
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        .service-card {
-            background: white;
+
+        .how-it-works {
+            background: linear-gradient(135deg, #f0f7f4, #e0efe8);
             border-radius: var(--radius);
             padding: 1.5rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            margin: 1rem 0;
         }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .service-icon {
-            font-size: 2.8rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .service-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-        }
-        
-        .service-card p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        /* CTA */
+
         .cta {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             text-align: center;
-            padding: 3rem 0;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            padding: 1.5rem;
         }
-        
+
         .cta .section-title h2,
         .cta .section-title p {
             color: white;
         }
-        
-        .user-selection {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .user-card {
-            background: white;
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        .user-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .user-icon {
-            font-size: 2.8rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .user-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-        }
-        
-        .user-card p {
-            margin-bottom: 1.5rem;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .user-card .btn {
-            margin: 0;
-        }
-        
-        /* Footer */
+
+        /* Footer compact */
         footer {
             background: linear-gradient(135deg, var(--darker), #0a0a0a);
             color: white;
-            padding: 2.5rem 0 1.5rem;
+            padding: 1.5rem 0 1rem;
+            margin-top: 1.5rem;
+            border-radius: var(--radius) var(--radius) 0 0;
         }
-        
+
         .footer-content {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
-        
+
         .footer-section h3 {
-            margin-bottom: 1.2rem;
-            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
             color: var(--secondary);
         }
-        
-        .footer-section p {
+
+        .footer-section p,
+        .footer-section ul li {
             color: #aaa;
-            margin-bottom: 1.2rem;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
         }
-        
+
         .footer-section ul {
             list-style: none;
         }
-        
+
         .footer-section ul li {
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            color: #aaa;
+            gap: 6px;
         }
-        
+
         .footer-section ul li i {
             color: var(--secondary);
+            font-size: 0.7rem;
         }
-        
+
         .footer-section ul li a {
             color: #aaa;
             text-decoration: none;
             transition: var(--transition);
         }
-        
+
         .footer-section ul li a:hover {
             color: white;
         }
-        
+
         .social-links {
             display: flex;
-            gap: 10px;
-            margin-top: 1rem;
+            gap: 8px;
+            margin-top: 0.8rem;
         }
-        
+
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: var(--transition);
-            font-size: 1rem;
+            font-size: 0.8rem;
         }
-        
+
         .social-links a:hover {
             background: var(--secondary);
             color: var(--dark);
         }
-        
+
         .copyright {
             text-align: center;
-            padding-top: 1.5rem;
+            padding-top: 1rem;
             border-top: 1px solid #333;
             color: #888;
-            font-size: 0.85rem;
+            font-size: 0.7rem;
         }
-        
-        /* Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s, transform 0.5s;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Responsive */
-        @media (min-width: 768px) {
-            .container {
-                width: 90%;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .btn-group {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .btn {
-                width: auto;
-                min-width: 180px;
-                margin: 5px;
-            }
-            
-            .features {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
-            }
-            
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .steps {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
+
+        /* Breakpoints responsifs */
+        @media (min-width: 640px) {
+            .features,
+            .services-grid,
             .user-selection {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .services-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .user-selection {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .desktop-nav {
-                display: flex;
-                align-items: center;
-            }
-            
-            .desktop-nav ul {
-                display: flex;
-                list-style: none;
-                gap: 15px;
-                margin-left: 20px;
-            }
-            
-            .desktop-nav a {
-                color: white;
-                text-decoration: none;
-                font-weight: 500;
-                padding: 6px 12px;
-                border-radius: 5px;
-                transition: var(--transition);
-                font-size: 0.95rem;
-            }
-            
-            .desktop-nav a:hover,
-            .desktop-nav a.active {
-                background: rgba(255, 255, 255, 0.1);
-            }
-            
-            .menu-toggle {
-                display: none;
-            }
-            
-            .mobile-nav {
-                display: none;
-            }
-            
-            .nav-overlay {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero {
-                min-height: 70vh;
-                padding: 30px 0;
             }
             
             .hero h1 {
                 font-size: 1.9rem;
             }
             
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .features,
+            .user-selection {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
             .hero p {
                 font-size: 1rem;
             }
             
-            .section-title h2 {
-                font-size: 1.6rem;
+            .btn-group .btn {
+                min-width: 160px;
+                padding: 10px 18px;
+                font-size: 0.85rem;
             }
             
-            .btn {
-                max-width: 200px;
-                padding: 10px 16px;
+            .tab-btn {
+                padding: 10px 20px;
                 font-size: 0.9rem;
-                min-height: 42px;
             }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 40vh;
+            }
+            
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .btn-group .btn {
+                width: 100%;
+                max-width: none;
+            }
+            
+            .tabs-container {
+                padding: 4px 6px;
+            }
+            
+            .tab-btn {
+                padding: 6px 8px;
+                font-size: 0.7rem;
+            }
+            
+            .tab-btn i {
+                font-size: 0.7rem;
+            }
+            
+            .features,
+            .services-grid,
+            .user-selection,
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            
+            section {
+                padding: 1.5rem 0;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tab-btn {
+                padding: 10px 24px;
+            }
+        }
+
+        /* Animations */
+        .feature-card, .service-card, .step, .user-card {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.4s ease;
+        }
+        
+        .feature-card.visible, .service-card.visible, .step.visible, .user-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Navigation mobile -->
-    <div class="nav-overlay" id="navOverlay"></div>
-    
-    <nav class="mobile-nav" id="mobileNav">
-        <div class="nav-header">
-            <div class="logo">
-                <span class="logo-icon">🚙</span>
-                <span>TransTogo</span>
-            </div>
-            <button class="nav-close" id="navClose">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <ul class="nav-menu">
-            <li><a href="#accueil" class="active"><i class="fas fa-home"></i> Accueil</a></li>
-            <li><a href="#apropos"><i class="fas fa-info-circle"></i> À propos</a></li>
-            <li><a href="#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
-            <li><a href="#fonctionnement"><i class="fas fa-cogs"></i> Fonctionnement</a></li>
-            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-            <li><a href="client.html"><i class="fas fa-user"></i> Espace Client</a></li>
-            <li><a href="conducteur.html"><i class="fas fa-id-card"></i> Espace Conducteur</a></li>
-            <li><a href="https://jeanskodoc.github.io/Carte-virtuelle-/"><i class="fas fa-credit-card"></i> Paiement Frais</a></li>
-        </ul>
-    </nav>
-
-    <!-- Header principal -->
     <header class="main-header">
         <div class="header-flag"></div>
         <div class="container">
@@ -754,217 +608,283 @@
                     <span class="logo-icon">🚙</span>
                     <span>TransTogo</span>
                 </div>
-                <nav class="desktop-nav">
-                    <ul>
-                        <li><a href="#accueil" class="active">Accueil</a></li>
-                        <li><a href="#apropos">À propos</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#fonctionnement">Fonctionnement</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-                <button class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
             </div>
         </div>
     </header>
 
-    <!-- Section Hero -->
-    <section class="hero" id="accueil">
-        <div class="container">
-            <div class="hero-content fade-in">
-                <h1>Transport Multimodal au Togo</h1>
-                <p>Une solution innovante pour simplifier vos déplacements et vos livraisons à travers tout le Togo</p>
-                <div class="btn-group">
-                    <a href="client.html" class="btn">
-                        <i class="fas fa-calendar-check"></i> Faire une réservation
-                    </a>
-                    <a href="conducteur.html" class="btn btn-secondary">
-                        <i class="fas fa-id-card"></i> Espace Conducteur
-                    </a>
-                    <a href="inscription.html" class="btn btn-outline">
-                        <i class="fas fa-user-plus"></i> Inscription Conducteur
-                    </a>
-                    <a href="https://jeanskodoc.github.io/Carte-virtuelle-/" class="btn btn-payment">
-                        <i class="fas fa-credit-card"></i> Payer les Frais
-                    </a>
+    <!-- Onglets compacts -->
+    <div class="main-tabs">
+        <div class="tabs-container">
+            <button class="tab-btn active" data-tab="accueil">
+                <i class="fas fa-home"></i> <span>Accueil</span>
+            </button>
+            <button class="tab-btn" data-tab="services">
+                <i class="fas fa-concierge-bell"></i> <span>Services</span>
+            </button>
+            <button class="tab-btn" data-tab="fonctionnement">
+                <i class="fas fa-cogs"></i> <span>Fonctionnement</span>
+            </button>
+            <button class="tab-btn" data-tab="espace">
+                <i class="fas fa-users"></i> <span>Espaces</span>
+            </button>
+            <button class="tab-btn" data-tab="contact">
+                <i class="fas fa-envelope"></i> <span>Contact</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Onglet Accueil -->
+        <div id="accueil" class="tab-content active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Transport Multimodal au Togo</h1>
+                    <p>Simplifiez vos déplacements et livraisons partout au Togo</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn" data-tab-link="espace">
+                            <i class="fas fa-calendar-check"></i> Réserver
+                        </a>
+                        <a href="#" class="btn btn-secondary" data-tab-link="espace">
+                            <i class="fas fa-id-card"></i> Conducteur
+                        </a>
+                        <a href="#" class="btn btn-payment" data-tab-link="contact">
+                            <i class="fas fa-credit-card"></i> Payer
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <section>
+                <div class="section-title">
+                    <h2>Pourquoi TransTogo ?</h2>
+                    <p>La solution de transport qui vous simplifie la vie</p>
+                </div>
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                        <h3>Rapide</h3>
+                        <p>Trouvez un transporteur en quelques secondes</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Sécurisé</h3>
+                        <p>Conducteurs vérifiés et notés</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-wallet"></i></div>
+                        <h3>Transparent</h3>
+                        <p>Prix connus à l'avance</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                        <h3>Support 24/7</h3>
+                        <p>Assistance permanente</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Onglet Services -->
+        <div id="services" class="tab-content">
+            <section>
+                <div class="section-title">
+                    <h2>Nos Services</h2>
+                    <p>Des solutions adaptées à tous vos besoins</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-motorcycle"></i></div>
+                        <h3>Moto</h3>
+                        <p>Déplacements rapides en ville</p>
+                        <small>À partir de 500 FCFA</small>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-shuttle-van"></i></div>
+                        <h3>Tricycle</h3>
+                        <p>Petits colis et courtes distances</p>
+                        <small>À partir de 1000 FCFA</small>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-truck-moving"></i></div>
+                        <h3>Taxi Bagage</h3>
+                        <p>Bagages et marchandises</p>
+                        <small>À partir de 2000 FCFA</small>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-car-side"></i></div>
+                        <h3>Transport Commun</h3>
+                        <p>Trajets partagés économiques</p>
+                        <small>À partir de 300 FCFA</small>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background: linear-gradient(135deg, #f0f7f4, #e0efe8); border-radius: var(--radius); padding: 1.5rem;">
+                <div class="section-title">
+                    <h2>Nos Atouts</h2>
+                    <p>Ce qui fait notre différence</p>
+                </div>
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                        <h3>24h/24 7j/7</h3>
+                        <p>Service disponible à toute heure</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div>
+                        <h3>Couverture Nationale</h3>
+                        <p>Partout au Togo</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Suivi GPS</h3>
+                        <p>Localisation en temps réel</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-star"></i></div>
+                        <h3>Chauffeurs Certifiés</h3>
+                        <p>Formés et vérifiés</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Onglet Fonctionnement -->
+        <div id="fonctionnement" class="tab-content">
+            <div class="how-it-works">
+                <div class="section-title">
+                    <h2>Comment ça marche ?</h2>
+                    <p>4 étapes simples pour utiliser notre service</p>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Choisissez</h3>
+                        <p>Votre type de transport</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Indiquez</h3>
+                        <p>Départ et destination</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Sélectionnez</h3>
+                        <p>Un transporteur disponible</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Confirmez</h3>
+                        <p>Validez et payez</p>
+                    </div>
+                </div>
+            </div>
+
+            <section>
+                <div class="section-title">
+                    <h2>Moyens de Paiement</h2>
+                    <p>Plusieurs options pour votre confort</p>
+                </div>
+                <div class="features">
+                    <div class="feature-card">
+                        <i class="fas fa-credit-card" style="font-size: 1.5rem; color: var(--primary);"></i>
+                        <h3>Carte Virtuelle</h3>
+                        <p>Paiement sécurisé</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt" style="font-size: 1.5rem; color: var(--primary);"></i>
+                        <h3>Mobile Money</h3>
+                        <p>Tmoney, Flooz</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-money-bill-wave" style="font-size: 1.5rem; color: var(--primary);"></i>
+                        <h3>Espèces</h3>
+                        <p>Au chauffeur</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-university" style="font-size: 1.5rem; color: var(--primary);"></i>
+                        <h3>Virement</h3>
+                        <p>Pour professionnels</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Onglet Espaces -->
+        <div id="espace" class="tab-content">
+            <div class="cta">
+                <div class="section-title">
+                    <h2>Rejoignez TransTogo</h2>
+                    <p>Client ou conducteur, trouvez votre espace</p>
+                </div>
+                <div class="user-selection">
+                    <div class="user-card">
+                        <div class="user-icon"><i class="fas fa-calendar-check"></i></div>
+                        <h3>Réservation</h3>
+                        <p>Réservez en quelques clics</p>
+                        <a href="#" class="btn" style="margin-top: 8px; padding: 6px 12px; font-size: 0.75rem;" data-tab-link="espace">Réserver</a>
+                    </div>
+                    <div class="user-card">
+                        <div class="user-icon"><i class="fas fa-id-card"></i></div>
+                        <h3>Conducteur</h3>
+                        <p>Accédez à votre espace</p>
+                        <a href="#" class="btn btn-secondary" style="margin-top: 8px; padding: 6px 12px; font-size: 0.75rem;" data-tab-link="espace">Connexion</a>
+                    </div>
+                    <div class="user-card">
+                        <div class="user-icon"><i class="fas fa-user-plus"></i></div>
+                        <h3>Inscription</h3>
+                        <p>Devenez conducteur</p>
+                        <a href="#" class="btn btn-outline" style="margin-top: 8px; padding: 6px 12px; font-size: 0.75rem; border-color: var(--primary); color: var(--primary); background: transparent;" data-tab-link="espace">S'inscrire</a>
+                    </div>
+                    <div class="user-card">
+                        <div class="user-icon"><i class="fas fa-credit-card"></i></div>
+                        <h3>Paiement</h3>
+                        <p>Payez vos frais</p>
+                        <a href="#" class="btn btn-payment" style="margin-top: 8px; padding: 6px 12px; font-size: 0.75rem;" data-tab-link="contact">Payer</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Section À propos -->
-    <section id="apropos">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>À propos de TransTogo</h2>
-                <p>Découvrez notre plateforme révolutionnaire qui connecte les usagers aux transporteurs</p>
-            </div>
-            
-            <div class="features">
-                <div class="card feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Rapide et Efficace</h3>
-                    <p>Trouvez un transporteur en quelques secondes seulement.</p>
+        <!-- Onglet Contact -->
+        <div id="contact" class="tab-content">
+            <section>
+                <div class="section-title">
+                    <h2>Contactez-nous</h2>
+                    <p>Notre équipe est à votre disposition</p>
                 </div>
-                
-                <div class="card feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                <div class="features">
+                    <div class="feature-card">
+                        <i class="fas fa-phone-alt" style="font-size: 1.5rem;"></i>
+                        <h3>Téléphone</h3>
+                        <p>+228 92 87 16 05</p>
                     </div>
-                    <h3>Sécurisé et Fiable</h3>
-                    <p>Tous nos transporteurs sont vérifiés et notés.</p>
-                </div>
-                
-                <div class="card feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-wallet"></i>
+                    <div class="feature-card">
+                        <i class="fas fa-envelope" style="font-size: 1.5rem;"></i>
+                        <h3>Email</h3>
+                        <p>contact@transtogo.tg</p>
                     </div>
-                    <h3>Tarifs Transparents</h3>
-                    <p>Connaissez le prix de votre course à l'avance.</p>
+                    <div class="feature-card">
+                        <i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i>
+                        <h3>Adresse</h3>
+                        <p>Lomé, Togo</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i>
+                        <h3>WhatsApp</h3>
+                        <p>+228 92 87 16 05</p>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
+    </div>
 
-    <!-- Section Fonctionnement -->
-    <section class="how-it-works" id="fonctionnement">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>Comment ça marche</h2>
-                <p>Quelques étapes simples pour utiliser notre service</p>
-            </div>
-            
-            <div class="steps">
-                <div class="step fade-in">
-                    <div class="step-number">1</div>
-                    <h3>Choisissez</h3>
-                    <p>Sélectionnez le type de transport adapté.</p>
-                </div>
-                
-                <div class="step fade-in">
-                    <div class="step-number">2</div>
-                    <h3>Indiquez</h3>
-                    <p>Précisez votre lieu et destination.</p>
-                </div>
-                
-                <div class="step fade-in">
-                    <div class="step-number">3</div>
-                    <h3>Sélectionnez</h3>
-                    <p>Choisissez parmi les transporteurs.</p>
-                </div>
-                
-                <div class="step fade-in">
-                    <div class="step-number">4</div>
-                    <h3>Confirmez</h3>
-                    <p>Validez et payez votre réservation.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Services -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>Nos Services de Transport</h2>
-                <p>Une gamme complète de solutions adaptées</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-motorcycle"></i>
-                    </div>
-                    <h3>Moto</h3>
-                    <p>Déplacements rapides en ville.</p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-shuttle-van"></i>
-                    </div>
-                    <h3>Tricycle</h3>
-                    <p>Petits colis et courtes distances.</p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-truck-moving"></i>
-                    </div>
-                    <h3>Taxi Bagage</h3>
-                    <p>Transport de bagages et marchandises.</p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-car-side"></i>
-                    </div>
-                    <h3>Transport Commun</h3>
-                    <p>Trajets partagés économiques.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section CTA -->
-    <section class="cta">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>Rejoignez TransTogo</h2>
-                <p>Que vous soyez client ou conducteur</p>
-            </div>
-            
-            <div class="user-selection">
-                <div class="user-card fade-in">
-                    <div class="user-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h3>Réservation</h3>
-                    <p>Réservez un transport en quelques clics.</p>
-                    <a href="client.html" class="btn">Réserver</a>
-                </div>
-                
-                <div class="user-card fade-in">
-                    <div class="user-icon">
-                        <i class="fas fa-id-card"></i>
-                    </div>
-                    <h3>Conducteur</h3>
-                    <p>Accédez à votre espace personnel.</p>
-                    <a href="conducteur.html" class="btn btn-secondary">Connexion</a>
-                </div>
-                
-                <div class="user-card fade-in">
-                    <div class="user-icon">
-                        <i class="fas fa-user-plus"></i>
-                    </div>
-                    <h3>Inscription</h3>
-                    <p>Devenez conducteur et augmentez vos revenus.</p>
-                    <a href="inscription.html" class="btn btn-outline">S'inscrire</a>
-                </div>
-                
-                <div class="user-card fade-in">
-                    <div class="user-icon">
-                        <i class="fas fa-credit-card"></i>
-                    </div>
-                    <h3>Paiement</h3>
-                    <p>Payez vos frais de service en sécurité.</p>
-                    <a href="https://jeanskodoc.github.io/Carte-virtuelle-/" class="btn btn-payment">Payer</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>TransTogo</h3>
-                    <p>Service de transport multimodal au Togo. Rapide, fiable et sécurisé.</p>
+                    <p>Transport multimodal au Togo</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -972,26 +892,24 @@
                         <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                
                 <div class="footer-section">
-                    <h3>Contact</h3>
+                    <h3>Liens</h3>
                     <ul>
-                        <li><i class="fas fa-phone"></i> +228 92 87 16 05</li>
-                        <li><i class="fas fa-envelope"></i> contact@transtogo.tg</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Lomé, Togo</li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="#" data-tab-link="accueil">Accueil</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="#" data-tab-link="services">Services</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="#" data-tab-link="fonctionnement">Fonctionnement</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="#" data-tab-link="espace">Espace</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
-                    <h3>Paiement</h3>
+                    <h3>Légal</h3>
                     <ul>
-                        <li><a href="https://jeanskodoc.github.io/Carte-virtuelle-/"><i class="fas fa-credit-card"></i> Carte Virtuelle</a></li>
-                        <li><i class="fas fa-mobile-alt"></i> Mobile Money</li>
-                        <li><i class="fas fa-money-bill-wave"></i> Espèces</li>
+                        <li><i class="fas fa-file-contract"></i> CGU</li>
+                        <li><i class="fas fa-lock"></i> Confidentialité</li>
+                        <li><i class="fas fa-cookie-bite"></i> Cookies</li>
                     </ul>
                 </div>
             </div>
-            
             <div class="copyright">
                 <p>&copy; 2025 TransTogo. Tous droits réservés.</p>
             </div>
@@ -999,62 +917,54 @@
     </footer>
 
     <script>
-        // Navigation mobile
-        const menuToggle = document.getElementById('menuToggle');
-        const navClose = document.getElementById('navClose');
-        const mobileNav = document.getElementById('mobileNav');
-        const navOverlay = document.getElementById('navOverlay');
-        
-        menuToggle.addEventListener('click', () => {
-            mobileNav.classList.add('active');
-            navOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-        
-        navClose.addEventListener('click', () => {
-            mobileNav.classList.remove('active');
-            navOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        navOverlay.addEventListener('click', () => {
-            mobileNav.classList.remove('active');
-            navOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        // Animation au défilement
-        function checkVisibility() {
-            const elements = document.querySelectorAll('.fade-in');
-            const windowHeight = window.innerHeight;
+        // Gestion des onglets
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.tab-content');
+
+        function switchTab(tabId) {
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
             
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('visible');
-                }
-            });
+            const activeTab = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+            if (activeTab) activeTab.classList.add('active');
+            const activeContent = document.getElementById(tabId);
+            if (activeContent) activeContent.classList.add('active');
+            
+            localStorage.setItem('activeTab', tabId);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        
-        window.addEventListener('scroll', checkVisibility);
-        window.addEventListener('load', checkVisibility);
-        
-        // Navigation fluide
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                switchTab(tabId);
+            });
+        });
+
+        document.querySelectorAll('[data-tab-link]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const tabId = link.getAttribute('data-tab-link');
+                switchTab(tabId);
+            });
+        });
+
+        const savedTab = localStorage.getItem('activeTab');
+        if (savedTab && document.getElementById(savedTab)) {
+            switchTab(savedTab);
+        }
+
+        // Animation au scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.feature-card, .service-card, .step, .user-card').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
