@@ -14,27 +14,29 @@
         }
 
         :root {
-            --primary: #008751;
-            --primary-dark: #006b3f;
-            --secondary: #ffcc00;
+            --primary: #006747;
+            --primary-dark: #004d36;
+            --secondary: #FFCE00;
             --secondary-dark: #e6b800;
-            --accent: #ef2d2d;
-            --accent-dark: #d42a2a;
+            --accent: #D21034;
+            --accent-dark: #b00d2c;
             --neutral: #f0f0f0;
             --dark: #1a1a1a;
             --darker: #0a0a0a;
             --light: #f9f9f9;
             --white: #ffffff;
+            --success: #28a745;
+            --warning: #ffc107;
+            --info: #17a2b8;
             --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
             --radius: 8px;
             --radius-sm: 6px;
             --transition: all 0.2s ease;
-            --flag-gradient: linear-gradient(135deg, #008751 33%, #ffcc00 33% 66%, #ef2d2d 66%);
         }
 
         body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.4;
@@ -48,7 +50,7 @@
             padding: 0 12px;
         }
 
-        /* Header compact */
+        /* Header */
         .main-header {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
@@ -57,15 +59,6 @@
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow);
-        }
-
-        .header-flag {
-            height: 2px;
-            width: 100%;
-            background: var(--flag-gradient);
-            position: absolute;
-            top: 0;
-            left: 0;
         }
 
         .header-content {
@@ -85,10 +78,9 @@
 
         .logo-icon {
             font-size: 1.2rem;
-            color: var(--secondary);
         }
 
-        /* Onglets responsive - version compacte */
+        /* Onglets principaux */
         .main-tabs {
             background: white;
             box-shadow: var(--shadow);
@@ -114,20 +106,11 @@
             height: 2px;
         }
 
-        .tabs-container::-webkit-scrollbar-track {
-            background: var(--neutral);
-        }
-
-        .tabs-container::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 3px;
-        }
-
         .tab-btn {
             background: transparent;
             border: none;
             padding: 8px 12px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 500;
             font-family: 'Poppins', sans-serif;
             color: var(--dark);
@@ -136,18 +119,13 @@
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             white-space: nowrap;
             flex-shrink: 0;
         }
 
         .tab-btn i {
-            font-size: 0.85rem;
-        }
-
-        .tab-btn:hover {
-            background: var(--neutral);
-            color: var(--primary);
+            font-size: 0.75rem;
         }
 
         .tab-btn.active {
@@ -166,70 +144,61 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Sections compactes */
+        /* Sections */
         section {
-            padding: 2rem 0;
+            padding: 1.5rem 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .section-title h2 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             font-weight: 600;
         }
 
         .section-title p {
             color: #666;
-            font-size: 0.85rem;
-            max-width: 500px;
-            margin: 0 auto;
+            font-size: 0.8rem;
         }
 
-        /* Hero compact */
+        /* Hero */
         .hero {
-            background: linear-gradient(rgba(0, 135, 81, 0.92), rgba(0, 107, 63, 0.95)), url('https://images.unsplash.com/photo-1581793745861-98b075f964f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-            min-height: 45vh;
+            background: linear-gradient(rgba(0, 103, 71, 0.85), rgba(0, 77, 54, 0.9)), url('https://images.unsplash.com/photo-1581793745861-98b075f964f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            min-height: 35vh;
             display: flex;
             align-items: center;
             text-align: center;
             color: white;
             border-radius: var(--radius);
-            margin-top: 0;
+            margin: 1rem 0;
         }
 
         .hero-content {
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
             padding: 1rem;
         }
 
         .hero h1 {
-            font-size: 1.6rem;
-            margin-bottom: 0.8rem;
-            line-height: 1.2;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
         }
 
         .hero p {
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
         }
 
-        /* Boutons compacts */
+        /* Boutons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -241,17 +210,11 @@
             border: none;
             border-radius: var(--radius-sm);
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 500;
             text-decoration: none;
             transition: var(--transition);
             min-height: 36px;
-            box-shadow: 0 2px 6px rgba(239, 45, 45, 0.2);
-        }
-
-        .btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 3px 10px rgba(239, 45, 45, 0.3);
         }
 
         .btn-secondary {
@@ -263,16 +226,10 @@
             background: transparent;
             border: 1.5px solid white;
             color: white;
-            box-shadow: none;
         }
 
-        .btn-outline:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        .btn-payment {
-            background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+        .btn-success {
+            background: var(--success);
         }
 
         .btn-group {
@@ -282,134 +239,225 @@
             gap: 8px;
         }
 
-        .btn-group .btn {
-            margin: 0;
-            flex: 0 1 auto;
-            min-width: 130px;
-        }
-
-        /* Grilles responsives */
-        .features,
-        .services-grid,
-        .user-selection {
+        /* Grilles */
+        .features, .services-grid, .user-selection {
             display: grid;
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
         .steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 0.8rem;
         }
 
-        .feature-card,
-        .service-card,
-        .step,
-        .user-card {
+        .feature-card, .service-card, .step, .user-card {
             text-align: center;
             background: var(--white);
             border-radius: var(--radius);
-            padding: 1rem;
+            padding: 0.8rem;
             box-shadow: var(--shadow);
-            transition: var(--transition);
         }
 
-        .feature-card:hover,
-        .service-card:hover,
-        .step:hover,
-        .user-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .feature-icon,
-        .service-icon,
-        .user-icon {
-            font-size: 1.8rem;
+        .feature-icon, .service-icon, .user-icon {
+            font-size: 1.5rem;
             color: var(--primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
-        .feature-card h3,
-        .service-card h3,
-        .step h3,
-        .user-card h3 {
-            font-size: 0.95rem;
-            margin-bottom: 0.4rem;
+        .feature-card h3, .service-card h3, .step h3, .user-card h3 {
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
             color: var(--primary);
-            font-weight: 600;
         }
 
-        .feature-card p,
-        .service-card p,
-        .step p,
-        .user-card p {
+        .feature-card p, .service-card p, .step p, .user-card p {
             color: #666;
-            font-size: 0.75rem;
-            line-height: 1.3;
+            font-size: 0.7rem;
         }
 
         .step-number {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 0.8rem;
+            margin: 0 auto 0.4rem;
+        }
+
+        /* Formulaires */
+        .form-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 0.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 500;
+            font-size: 0.75rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        /* Cartes conducteur */
+        .drivers-grid {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .driver-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border-left: 3px solid var(--primary);
+        }
+
+        .driver-header {
+            padding: 10px;
+            background: var(--neutral);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .driver-type {
+            background: var(--secondary);
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .driver-body {
+            padding: 10px;
+        }
+
+        .driver-info {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .driver-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--neutral);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .driver-details h3 {
             font-size: 0.9rem;
-            font-weight: bold;
-            margin: 0 auto 0.6rem;
+            color: var(--primary);
         }
 
-        .how-it-works {
-            background: linear-gradient(135deg, #f0f7f4, #e0efe8);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            margin: 1rem 0;
+        .driver-rating {
+            color: #f39c12;
+            font-size: 0.7rem;
         }
 
-        .cta {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        .driver-price {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        .driver-contact {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .driver-contact .btn {
+            flex: 1;
+            padding: 6px 10px;
+            font-size: 0.7rem;
+        }
+
+        /* Onglets secondaires */
+        .sub-tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+            overflow-x: auto;
+        }
+
+        .sub-tab {
+            padding: 8px 15px;
+            background: var(--neutral);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+
+        .sub-tab.active {
+            background: var(--primary);
             color: white;
-            text-align: center;
-            border-radius: var(--radius);
-            margin: 1.5rem 0;
-            padding: 1.5rem;
         }
 
-        .cta .section-title h2,
-        .cta .section-title p {
-            color: white;
+        .sub-content {
+            display: none;
         }
 
-        /* Footer compact */
+        .sub-content.active {
+            display: block;
+        }
+
+        /* Footer */
         footer {
             background: linear-gradient(135deg, var(--darker), #0a0a0a);
             color: white;
             padding: 1.5rem 0 1rem;
             margin-top: 1.5rem;
-            border-radius: var(--radius) var(--radius) 0 0;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
         .footer-section h3 {
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
             color: var(--secondary);
         }
 
-        .footer-section p,
-        .footer-section ul li {
+        .footer-section p, .footer-section ul li {
             color: #aaa;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
 
         .footer-section ul {
@@ -417,191 +465,104 @@
         }
 
         .footer-section ul li {
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        .footer-section ul li i {
-            color: var(--secondary);
-            font-size: 0.7rem;
-        }
-
-        .footer-section ul li a {
-            color: #aaa;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-section ul li a:hover {
-            color: white;
-        }
-
         .social-links {
             display: flex;
             gap: 8px;
-            margin-top: 0.8rem;
+            margin-top: 0.5rem;
         }
 
         .social-links a {
+            width: 28px;
+            height: 28px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
             color: white;
-            transition: var(--transition);
-            font-size: 0.8rem;
-        }
-
-        .social-links a:hover {
-            background: var(--secondary);
-            color: var(--dark);
+            font-size: 0.7rem;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 1rem;
+            padding-top: 0.8rem;
             border-top: 1px solid #333;
             color: #888;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
 
-        /* Breakpoints responsifs */
+        .hidden {
+            display: none !important;
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 10px;
+            right: 10px;
+            padding: 12px;
+            background: var(--success);
+            color: white;
+            border-radius: var(--radius);
+            z-index: 1100;
+            transform: translateY(100px);
+            transition: transform 0.3s;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+        }
+
+        /* Responsive */
         @media (min-width: 640px) {
-            .features,
-            .services-grid,
-            .user-selection {
+            .features, .services-grid, .user-selection {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-            .hero h1 {
-                font-size: 1.9rem;
-            }
-            
-            .tab-btn {
-                padding: 8px 16px;
-                font-size: 0.85rem;
-            }
+            .hero h1 { font-size: 1.8rem; }
+            .tab-btn { padding: 8px 16px; font-size: 0.8rem; }
         }
 
         @media (min-width: 768px) {
-            .container {
-                padding: 0 20px;
-            }
-            
-            .features,
-            .user-selection {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .services-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .btn-group .btn {
-                min-width: 160px;
-                padding: 10px 18px;
-                font-size: 0.85rem;
-            }
-            
-            .tab-btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
+            .features, .user-selection { grid-template-columns: repeat(4, 1fr); }
+            .services-grid { grid-template-columns: repeat(4, 1fr); }
+            .drivers-grid { grid-template-columns: repeat(2, 1fr); }
+            .form-row { flex-direction: row; }
+            .form-row .form-group { flex: 1; }
+            .footer-content { grid-template-columns: repeat(3, 1fr); }
         }
 
         @media (max-width: 480px) {
-            .hero {
-                min-height: 40vh;
-            }
-            
-            .hero h1 {
-                font-size: 1.3rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.2rem;
-            }
-            
-            .btn-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .btn-group .btn {
-                width: 100%;
-                max-width: none;
-            }
-            
-            .tabs-container {
-                padding: 4px 6px;
-            }
-            
-            .tab-btn {
-                padding: 6px 8px;
-                font-size: 0.7rem;
-            }
-            
-            .tab-btn i {
-                font-size: 0.7rem;
-            }
-            
-            .features,
-            .services-grid,
-            .user-selection,
-            .steps {
-                grid-template-columns: 1fr;
-                gap: 0.8rem;
-            }
-            
-            section {
-                padding: 1.5rem 0;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
+            .hero { min-height: 30vh; }
+            .hero h1 { font-size: 1.2rem; }
+            .btn-group .btn { width: 100%; max-width: none; }
+            .driver-header { flex-direction: column; text-align: center; }
+            .driver-info { flex-direction: column; text-align: center; }
+            .driver-avatar { margin: 0 auto; }
         }
 
-        @media (min-width: 1024px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .tab-btn {
-                padding: 10px 24px;
-            }
-        }
-
-        /* Animations */
-        .feature-card, .service-card, .step, .user-card {
+        /* Animation */
+        .feature-card, .service-card, .step, .user-card, .driver-card {
             opacity: 0;
             transform: translateY(15px);
             transition: all 0.4s ease;
         }
         
-        .feature-card.visible, .service-card.visible, .step.visible, .user-card.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
     </style>
 </head>
 <body>
     <header class="main-header">
-        <div class="header-flag"></div>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
@@ -612,44 +573,28 @@
         </div>
     </header>
 
-    <!-- Onglets compacts -->
+    <!-- Onglets principaux -->
     <div class="main-tabs">
         <div class="tabs-container">
-            <button class="tab-btn active" data-tab="accueil">
-                <i class="fas fa-home"></i> <span>Accueil</span>
-            </button>
-            <button class="tab-btn" data-tab="services">
-                <i class="fas fa-concierge-bell"></i> <span>Services</span>
-            </button>
-            <button class="tab-btn" data-tab="fonctionnement">
-                <i class="fas fa-cogs"></i> <span>Fonctionnement</span>
-            </button>
-            <button class="tab-btn" data-tab="espace">
-                <i class="fas fa-users"></i> <span>Espaces</span>
-            </button>
-            <button class="tab-btn" data-tab="contact">
-                <i class="fas fa-envelope"></i> <span>Contact</span>
-            </button>
+            <button class="tab-btn active" data-tab="accueil"><i class="fas fa-home"></i> Accueil</button>
+            <button class="tab-btn" data-tab="reservation"><i class="fas fa-calendar-check"></i> Réservation</button>
+            <button class="tab-btn" data-tab="conducteur"><i class="fas fa-id-card"></i> Espace Conducteur</button>
+            <button class="tab-btn" data-tab="inscription"><i class="fas fa-user-plus"></i> Inscription</button>
+            <button class="tab-btn" data-tab="contact"><i class="fas fa-envelope"></i> Contact</button>
         </div>
     </div>
 
     <div class="container">
-        <!-- Onglet Accueil -->
+        <!-- ==================== ONGLET ACCUEIL ==================== -->
         <div id="accueil" class="tab-content active">
             <div class="hero">
                 <div class="hero-content">
                     <h1>Transport Multimodal au Togo</h1>
                     <p>Simplifiez vos déplacements et livraisons partout au Togo</p>
                     <div class="btn-group">
-                        <a href="#" class="btn" data-tab-link="espace">
-                            <i class="fas fa-calendar-check"></i> Réserver
-                        </a>
-                        <a href="#" class="btn btn-secondary" data-tab-link="espace">
-                            <i class="fas fa-id-card"></i> Conducteur
-                        </a>
-                        <a href="#" class="btn btn-payment" data-tab-link="contact">
-                            <i class="fas fa-credit-card"></i> Payer
-                        </a>
+                        <a href="#" class="btn" data-tab-link="reservation"><i class="fas fa-calendar-check"></i> Réserver</a>
+                        <a href="#" class="btn btn-secondary" data-tab-link="conducteur"><i class="fas fa-id-card"></i> Espace Conducteur</a>
+                        <a href="#" class="btn btn-outline" data-tab-link="inscription"><i class="fas fa-user-plus"></i> Devenir conducteur</a>
                     </div>
                 </div>
             </div>
@@ -660,312 +605,477 @@
                     <p>La solution de transport qui vous simplifie la vie</p>
                 </div>
                 <div class="features">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                        <h3>Rapide</h3>
-                        <p>Trouvez un transporteur en quelques secondes</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3>Sécurisé</h3>
-                        <p>Conducteurs vérifiés et notés</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-wallet"></i></div>
-                        <h3>Transparent</h3>
-                        <p>Prix connus à l'avance</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-headset"></i></div>
-                        <h3>Support 24/7</h3>
-                        <p>Assistance permanente</p>
-                    </div>
+                    <div class="feature-card"><div class="feature-icon"><i class="fas fa-bolt"></i></div><h3>Rapide</h3><p>Trouvez un transporteur en quelques secondes</p></div>
+                    <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Sécurisé</h3><p>Conducteurs vérifiés et notés</p></div>
+                    <div class="feature-card"><div class="feature-icon"><i class="fas fa-wallet"></i></div><h3>Transparent</h3><p>Prix connus à l'avance</p></div>
+                    <div class="feature-card"><div class="feature-icon"><i class="fas fa-headset"></i></div><h3>Support 24/7</h3><p>Assistance permanente</p></div>
                 </div>
             </section>
-        </div>
 
-        <!-- Onglet Services -->
-        <div id="services" class="tab-content">
+            <section style="background: linear-gradient(135deg, #f0f7f4, #e0efe8); border-radius: var(--radius); padding: 1rem;">
+                <div class="section-title">
+                    <h2>Comment ça marche ?</h2>
+                    <p>4 étapes simples</p>
+                </div>
+                <div class="steps">
+                    <div class="step"><div class="step-number">1</div><h3>Choisissez</h3><p>Votre type de transport</p></div>
+                    <div class="step"><div class="step-number">2</div><h3>Indiquez</h3><p>Départ et destination</p></div>
+                    <div class="step"><div class="step-number">3</div><h3>Sélectionnez</h3><p>Un transporteur</p></div>
+                    <div class="step"><div class="step-number">4</div><h3>Confirmez</h3><p>Validez et payez</p></div>
+                </div>
+            </section>
+
             <section>
                 <div class="section-title">
                     <h2>Nos Services</h2>
                     <p>Des solutions adaptées à tous vos besoins</p>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-motorcycle"></i></div>
-                        <h3>Moto</h3>
-                        <p>Déplacements rapides en ville</p>
-                        <small>À partir de 500 FCFA</small>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-shuttle-van"></i></div>
-                        <h3>Tricycle</h3>
-                        <p>Petits colis et courtes distances</p>
-                        <small>À partir de 1000 FCFA</small>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-truck-moving"></i></div>
-                        <h3>Taxi Bagage</h3>
-                        <p>Bagages et marchandises</p>
-                        <small>À partir de 2000 FCFA</small>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-car-side"></i></div>
-                        <h3>Transport Commun</h3>
-                        <p>Trajets partagés économiques</p>
-                        <small>À partir de 300 FCFA</small>
-                    </div>
-                </div>
-            </section>
-
-            <section style="background: linear-gradient(135deg, #f0f7f4, #e0efe8); border-radius: var(--radius); padding: 1.5rem;">
-                <div class="section-title">
-                    <h2>Nos Atouts</h2>
-                    <p>Ce qui fait notre différence</p>
-                </div>
-                <div class="features">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-clock"></i></div>
-                        <h3>24h/24 7j/7</h3>
-                        <p>Service disponible à toute heure</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div>
-                        <h3>Couverture Nationale</h3>
-                        <p>Partout au Togo</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3>Suivi GPS</h3>
-                        <p>Localisation en temps réel</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-star"></i></div>
-                        <h3>Chauffeurs Certifiés</h3>
-                        <p>Formés et vérifiés</p>
-                    </div>
+                    <div class="service-card"><div class="service-icon"><i class="fas fa-motorcycle"></i></div><h3>Moto</h3><p>À partir de 500 FCFA</p></div>
+                    <div class="service-card"><div class="service-icon"><i class="fas fa-shuttle-van"></i></div><h3>Tricycle</h3><p>À partir de 1000 FCFA</p></div>
+                    <div class="service-card"><div class="service-icon"><i class="fas fa-truck-moving"></i></div><h3>Taxi Bagage</h3><p>À partir de 2000 FCFA</p></div>
+                    <div class="service-card"><div class="service-icon"><i class="fas fa-car-side"></i></div><h3>Transport Commun</h3><p>À partir de 300 FCFA</p></div>
                 </div>
             </section>
         </div>
 
-        <!-- Onglet Fonctionnement -->
-        <div id="fonctionnement" class="tab-content">
-            <div class="how-it-works">
+        <!-- ==================== ONGLET RÉSERVATION ==================== -->
+        <div id="reservation" class="tab-content">
+            <div class="form-card">
                 <div class="section-title">
-                    <h2>Comment ça marche ?</h2>
-                    <p>4 étapes simples pour utiliser notre service</p>
+                    <h2>Réservez votre transport</h2>
+                    <p>Sélectionnez votre type de service et votre localisation</p>
                 </div>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>Choisissez</h3>
-                        <p>Votre type de transport</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>Indiquez</h3>
-                        <p>Départ et destination</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>Sélectionnez</h3>
-                        <p>Un transporteur disponible</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <h3>Confirmez</h3>
-                        <p>Validez et payez</p>
+
+                <div class="form-group">
+                    <label>Type de service</label>
+                    <div class="service-selection" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
+                        <button type="button" class="service-select-btn active" data-service="moto" style="padding: 8px; background: var(--neutral); border: none; border-radius: var(--radius-sm); cursor: pointer;"><i class="fas fa-motorcycle"></i> Moto</button>
+                        <button type="button" class="service-select-btn" data-service="tricycle" style="padding: 8px; background: var(--neutral); border: none; border-radius: var(--radius-sm); cursor: pointer;"><i class="fas fa-shuttle-van"></i> Tricycle</button>
+                        <button type="button" class="service-select-btn" data-service="bagage" style="padding: 8px; background: var(--neutral); border: none; border-radius: var(--radius-sm); cursor: pointer;"><i class="fas fa-truck-moving"></i> Bagage</button>
+                        <button type="button" class="service-select-btn" data-service="commun" style="padding: 8px; background: var(--neutral); border: none; border-radius: var(--radius-sm); cursor: pointer;"><i class="fas fa-car-side"></i> Commun</button>
                     </div>
                 </div>
+
+                <div class="form-row">
+                    <div class="form-group"><label>Région</label><select id="res_region"><option value="">Sélectionnez</option><option value="maritime">Maritime</option><option value="plateaux">Plateaux</option><option value="centrale">Centrale</option><option value="kara">Kara</option><option value="savanes">Savanes</option></select></div>
+                    <div class="form-group"><label>Ville</label><select id="res_ville"><option value="">Sélectionnez d'abord une région</option></select></div>
+                    <div class="form-group"><label>Commune</label><select id="res_commune"><option value="">Sélectionnez d'abord une ville</option></select></div>
+                </div>
+
+                <div class="form-group">
+                    <label><input type="checkbox" id="availableOnly" checked> Afficher seulement les disponibles</label>
+                </div>
+
+                <div id="drivers-list" class="drivers-grid"></div>
             </div>
 
-            <section>
-                <div class="section-title">
-                    <h2>Moyens de Paiement</h2>
-                    <p>Plusieurs options pour votre confort</p>
+            <!-- Formulaire de réservation détaillé -->
+            <div id="bookingForm" class="form-card hidden">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Détails de la réservation</h3>
+                <div class="form-row">
+                    <div class="form-group"><label>Nom complet</label><input type="text" id="clientName" placeholder="Votre nom"></div>
+                    <div class="form-group"><label>Téléphone</label><input type="tel" id="clientPhone" placeholder="+228XXXXXXXX"></div>
                 </div>
-                <div class="features">
-                    <div class="feature-card">
-                        <i class="fas fa-credit-card" style="font-size: 1.5rem; color: var(--primary);"></i>
-                        <h3>Carte Virtuelle</h3>
-                        <p>Paiement sécurisé</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-mobile-alt" style="font-size: 1.5rem; color: var(--primary);"></i>
-                        <h3>Mobile Money</h3>
-                        <p>Tmoney, Flooz</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-money-bill-wave" style="font-size: 1.5rem; color: var(--primary);"></i>
-                        <h3>Espèces</h3>
-                        <p>Au chauffeur</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-university" style="font-size: 1.5rem; color: var(--primary);"></i>
-                        <h3>Virement</h3>
-                        <p>Pour professionnels</p>
-                    </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Lieu de départ</label><input type="text" id="pickupLocation" placeholder="Adresse exacte"></div>
+                    <div class="form-group"><label>Destination</label><input type="text" id="destination" placeholder="Adresse d'arrivée"></div>
                 </div>
-            </section>
+                <div class="form-row">
+                    <div class="form-group"><label>Distance (km)</label><input type="number" id="distance" min="1" value="5"></div>
+                    <div class="form-group"><label>Transporteur</label><input type="text" id="selectedDriverName" readonly></div>
+                </div>
+                <div class="price-estimation" style="background: var(--neutral); padding: 10px; border-radius: var(--radius-sm); margin: 10px 0;">
+                    <p><strong>Estimation :</strong> <span id="totalPrice">0</span> FCFA</p>
+                </div>
+                <button class="btn" id="confirmBookingBtn" style="width: 100%;"><i class="fab fa-whatsapp"></i> Confirmer la réservation</button>
+                <button class="btn btn-secondary" id="cancelBookingBtn" style="width: 100%; margin-top: 8px;">Annuler</button>
+            </div>
         </div>
 
-        <!-- Onglet Espaces -->
-        <div id="espace" class="tab-content">
-            <div class="cta">
-                <div class="section-title">
-                    <h2>Rejoignez TransTogo</h2>
-                    <p>Client ou conducteur, trouvez votre espace</p>
+        <!-- ==================== ONGLET ESPACE CONDUCTEUR ==================== -->
+        <div id="conducteur" class="tab-content">
+            <!-- Formulaire de connexion conducteur -->
+            <div id="conducteur-login" class="form-card">
+                <div class="section-title"><h2>Espace Conducteur</h2><p>Connectez-vous à votre compte</p></div>
+                <div class="form-group"><label>Identifiant</label><input type="text" id="driverLoginId" placeholder="Votre identifiant"></div>
+                <div class="form-group"><label>Mot de passe</label><input type="password" id="driverLoginPwd" placeholder="Votre mot de passe"></div>
+                <button class="btn" id="conducteurLoginBtn" style="width: 100%;"><i class="fas fa-sign-in-alt"></i> Se connecter</button>
+                <p style="text-align: center; margin-top: 10px; font-size: 0.7rem;">Identifiants de test: "KOLA Maniwah" / "taxi123"</p>
+            </div>
+
+            <!-- Interface conducteur (cachée après connexion) -->
+            <div id="conducteur-dashboard" class="hidden">
+                <div class="form-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                        <h3><i class="fas fa-user"></i> <span id="dashboardDriverName">-</span></h3>
+                        <button class="btn btn-secondary" id="conducteurLogoutBtn" style="padding: 5px 10px;"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
+                    </div>
                 </div>
-                <div class="user-selection">
-                    <div class="user-card">
-                        <div class="user-icon"><i class="fas fa-calendar-check"></i></div>
-                        <h3>Réservation</h3>
-                        <p>Réservez en quelques clics</p>
-                        <a href="#" class="btn" style="margin-top: 8px; padding: 6px 12px; font-size: 0.75rem;" data-tab-link="espace">Réserver</a>
+
+                <div class="sub-tabs">
+                    <div class="sub-tab active" data-subtab="trajet">Trajet en cours</div>
+                    <div class="sub-tab" data-subtab="historique">Historique</div>
+                    <div class="sub-tab" data-subtab="recus">Reçus</div>
+                </div>
+
+                <!-- Onglet Trajet -->
+                <div id="subtab-trajet" class="sub-content active">
+                    <div class="form-card">
+                        <h3 style="margin-bottom: 10px;">Configuration du trajet</h3>
+                        <div class="form-row">
+                            <div class="form-group"><label>Type de service</label><select id="driverServiceType"><option value="moto">Moto</option><option value="tricycle">Tricycle</option><option value="bagage">Taxi Bagage</option><option value="commun">Transport Commun</option></select></div>
+                            <div class="form-group"><label>Prix/km (FCFA)</label><input type="number" id="driverPriceKm" value="150"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Nom du client</label><input type="text" id="tripClientName" placeholder="Nom du client"></div>
+                            <div class="form-group"><label>Téléphone client</label><input type="text" id="tripClientPhone" placeholder="+228XXXXXXXX"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Destination</label><input type="text" id="tripDestination" placeholder="Adresse de destination"></div>
+                        </div>
+                        <button class="btn" id="startTripBtn" style="width: 100%;"><i class="fab fa-google"></i> Démarrer avec Google Maps</button>
                     </div>
-                    <div class="user-card">
-                        <div class="user-icon"><i class="fas fa-id-card"></i></div>
-                        <h3>Conducteur</h3>
-                        <p>Accédez à votre espace</p>
-                        <a href="#" class="btn btn-secondary" style="margin-top: 8px; padding: 6px 12px; font-size: 0.75rem;" data-tab-link="espace">Connexion</a>
+
+                    <div id="activeTripPanel" class="form-card hidden">
+                        <h3>Trajet en cours</h3>
+                        <p>Client: <span id="activeClientName">-</span></p>
+                        <p>Destination: <span id="activeDestination">-</span></p>
+                        <p>Distance parcourue: <span id="tripDistance">0</span> km</p>
+                        <p>Tarif: <span id="tripFare">0</span> FCFA</p>
+                        <div class="btn-group">
+                            <button class="btn btn-success" id="endTripBtn"><i class="fas fa-stop"></i> Terminer</button>
+                        </div>
                     </div>
-                    <div class="user-card">
-                        <div class="user-icon"><i class="fas fa-user-plus"></i></div>
-                        <h3>Inscription</h3>
-                        <p>Devenez conducteur</p>
-                        <a href="#" class="btn btn-outline" style="margin-top: 8px; padding: 6px 12px; font-size: 0.75rem; border-color: var(--primary); color: var(--primary); background: transparent;" data-tab-link="espace">S'inscrire</a>
+                </div>
+
+                <!-- Onglet Historique -->
+                <div id="subtab-historique" class="sub-content">
+                    <div id="tripHistoryList" class="form-card">
+                        <p>Aucun trajet effectué</p>
                     </div>
-                    <div class="user-card">
-                        <div class="user-icon"><i class="fas fa-credit-card"></i></div>
-                        <h3>Paiement</h3>
-                        <p>Payez vos frais</p>
-                        <a href="#" class="btn btn-payment" style="margin-top: 8px; padding: 6px 12px; font-size: 0.75rem;" data-tab-link="contact">Payer</a>
+                </div>
+
+                <!-- Onglet Reçus -->
+                <div id="subtab-recus" class="sub-content">
+                    <div id="receiptsList" class="form-card">
+                        <p>Aucun reçu généré</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Onglet Contact -->
+        <!-- ==================== ONGLET INSCRIPTION CONDUCTEUR ==================== -->
+        <div id="inscription" class="tab-content">
+            <div class="form-card">
+                <div class="section-title"><h2>Devenez Conducteur TransTogo</h2><p>Rejoignez notre plateforme et augmentez vos revenus</p></div>
+                <div class="form-row">
+                    <div class="form-group"><label>Nom complet *</label><input type="text" id="inscNom" placeholder="Votre nom et prénom"></div>
+                    <div class="form-group"><label>Téléphone *</label><input type="tel" id="inscPhone" placeholder="+228XXXXXXXX"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Email</label><input type="email" id="inscEmail" placeholder="votre@email.com"></div>
+                    <div class="form-group"><label>Type de service *</label><select id="inscService"><option value="moto">Moto</option><option value="tricycle">Tricycle</option><option value="bagage">Taxi Bagage</option><option value="commun">Transport Commun</option></select></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Modèle du véhicule *</label><input type="text" id="inscVehicle" placeholder="Ex: Yamaha 125"></div>
+                    <div class="form-group"><label>Prix proposé/km (FCFA) *</label><input type="number" id="inscPrice" placeholder="150"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Années d'expérience</label><input type="number" id="inscExperience" placeholder="0"></div>
+                    <div class="form-group"><label>Disponibilité</label><select id="inscAvailability"><option value="full-time">Temps plein</option><option value="part-time">Temps partiel</option></select></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Région *</label><select id="inscRegion"><option value="">Sélectionnez</option><option value="maritime">Maritime</option><option value="plateaux">Plateaux</option><option value="centrale">Centrale</option><option value="kara">Kara</option><option value="savanes">Savanes</option></select></div>
+                    <div class="form-group"><label>Ville *</label><select id="inscVille"><option value="">Sélectionnez d'abord une région</option></select></div>
+                </div>
+                <div class="form-group">
+                    <label><input type="checkbox" id="inscTerms"> J'accepte les conditions d'utilisation</label>
+                </div>
+                <button class="btn" id="submitInscriptionBtn" style="width: 100%;"><i class="fab fa-whatsapp"></i> Envoyer l'inscription</button>
+            </div>
+        </div>
+
+        <!-- ==================== ONGLET CONTACT ==================== -->
         <div id="contact" class="tab-content">
-            <section>
-                <div class="section-title">
-                    <h2>Contactez-nous</h2>
-                    <p>Notre équipe est à votre disposition</p>
-                </div>
+            <div class="form-card">
+                <div class="section-title"><h2>Contactez-nous</h2><p>Notre équipe est à votre disposition</p></div>
                 <div class="features">
-                    <div class="feature-card">
-                        <i class="fas fa-phone-alt" style="font-size: 1.5rem;"></i>
-                        <h3>Téléphone</h3>
-                        <p>+228 92 87 16 05</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-envelope" style="font-size: 1.5rem;"></i>
-                        <h3>Email</h3>
-                        <p>contact@transtogo.tg</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i>
-                        <h3>Adresse</h3>
-                        <p>Lomé, Togo</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i>
-                        <h3>WhatsApp</h3>
-                        <p>+228 92 87 16 05</p>
-                    </div>
+                    <div class="feature-card"><i class="fas fa-phone-alt" style="font-size: 1.5rem;"></i><h3>Téléphone</h3><p>+228 92 87 16 05</p></div>
+                    <div class="feature-card"><i class="fas fa-envelope" style="font-size: 1.5rem;"></i><h3>Email</h3><p>contact@transtogo.tg</p></div>
+                    <div class="feature-card"><i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i><h3>Adresse</h3><p>Lomé, Togo</p></div>
+                    <div class="feature-card"><i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i><h3>WhatsApp</h3><p>+228 92 87 16 05</p></div>
                 </div>
-            </section>
+            </div>
         </div>
     </div>
 
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>TransTogo</h3>
-                    <p>Transport multimodal au Togo</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Liens</h3>
-                    <ul>
-                        <li><i class="fas fa-chevron-right"></i> <a href="#" data-tab-link="accueil">Accueil</a></li>
-                        <li><i class="fas fa-chevron-right"></i> <a href="#" data-tab-link="services">Services</a></li>
-                        <li><i class="fas fa-chevron-right"></i> <a href="#" data-tab-link="fonctionnement">Fonctionnement</a></li>
-                        <li><i class="fas fa-chevron-right"></i> <a href="#" data-tab-link="espace">Espace</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Légal</h3>
-                    <ul>
-                        <li><i class="fas fa-file-contract"></i> CGU</li>
-                        <li><i class="fas fa-lock"></i> Confidentialité</li>
-                        <li><i class="fas fa-cookie-bite"></i> Cookies</li>
-                    </ul>
-                </div>
+                <div class="footer-section"><h3>TransTogo</h3><p>Transport multimodal au Togo</p><div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div></div>
+                <div class="footer-section"><h3>Liens</h3><ul><li><a href="#" data-tab-link="accueil">Accueil</a></li><li><a href="#" data-tab-link="reservation">Réservation</a></li><li><a href="#" data-tab-link="conducteur">Conducteur</a></li></ul></div>
+                <div class="footer-section"><h3>Légal</h3><ul><li>CGU</li><li>Confidentialité</li></ul></div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 TransTogo. Tous droits réservés.</p>
-            </div>
+            <div class="copyright"><p>&copy; 2025 TransTogo. Tous droits réservés.</p></div>
         </div>
     </footer>
 
-    <script>
-        // Gestion des onglets
-        const tabs = document.querySelectorAll('.tab-btn');
-        const contents = document.querySelectorAll('.tab-content');
+    <div id="notification" class="notification"><span id="notificationText"></span></div>
 
-        function switchTab(tabId) {
-            tabs.forEach(tab => tab.classList.remove('active'));
-            contents.forEach(content => content.classList.remove('active'));
-            
-            const activeTab = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
-            if (activeTab) activeTab.classList.add('active');
-            const activeContent = document.getElementById(tabId);
-            if (activeContent) activeContent.classList.add('active');
-            
-            localStorage.setItem('activeTab', tabId);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    <script>
+        // ==================== DONNÉES ====================
+        const transporteurs = [
+            { id: 1, nom: "KOLA Maniwah", type: "moto", prixKm: 100, disponible: true, telephone: "+22892871605", region: "kara", ville: "Kara", commune: "Kozah" },
+            { id: 2, nom: "Ayaovi Agbéko", type: "moto", prixKm: 120, disponible: true, telephone: "+22892136007", region: "maritime", ville: "Lomé", commune: "Bè" },
+            { id: 3, nom: "Togbui Adjo", type: "tricycle", prixKm: 300, disponible: true, telephone: "+22893345678", region: "plateaux", ville: "Kpalimé", commune: "Kpalimé Centre" },
+            { id: 4, nom: "Taxi Bagage Togo", type: "bagage", prixKm: 500, disponible: true, telephone: "+22822212019", region: "maritime", ville: "Lomé", commune: "Nyékonakpoè" },
+            { id: 5, nom: "Transport Savanes", type: "commun", prixKm: 90, disponible: true, telephone: "+22894455667", region: "savanes", ville: "Dapaong", commune: "Dapaong Centre" }
+        ];
+
+        const localitesTogo = {
+            maritime: { villes: ["Lomé", "Aného", "Tsévié"], communes: { "Lomé": ["Bè", "Agoè", "Tokoin", "Nyékonakpoè"], "Aného": ["Aného Ville"], "Tsévié": ["Tsévié Centre"] } },
+            plateaux: { villes: ["Atakpamé", "Kpalimé"], communes: { "Atakpamé": ["Atakpamé Centre"], "Kpalimé": ["Kpalimé Centre"] } },
+            centrale: { villes: ["Sokodé"], communes: { "Sokodé": ["Sokodé Centre"] } },
+            kara: { villes: ["Kara"], communes: { "Kara": ["Kara Centre", "Kozah"] } },
+            savanes: { villes: ["Dapaong", "Mango"], communes: { "Dapaong": ["Dapaong Centre"], "Mango": ["Mango Centre"] } }
+        };
+
+        let currentDriver = null;
+        let selectedDriverForBooking = null;
+        let tripHistory = JSON.parse(localStorage.getItem('tripHistory')) || [];
+        let receipts = JSON.parse(localStorage.getItem('receipts')) || [];
+
+        // ==================== UTILITAIRES ====================
+        function showNotification(msg, type = 'success') {
+            const notif = document.getElementById('notification');
+            document.getElementById('notificationText').textContent = msg;
+            notif.style.background = type === 'error' ? 'var(--accent)' : 'var(--success)';
+            notif.classList.add('show');
+            setTimeout(() => notif.classList.remove('show'), 3000);
         }
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const tabId = tab.getAttribute('data-tab');
-                switchTab(tabId);
+        function initLocationSelectors(prefix) {
+            const regionSel = document.getElementById(`${prefix}_region`);
+            const villeSel = document.getElementById(`${prefix}_ville`);
+            const communeSel = document.getElementById(`${prefix}_commune`);
+            if (!regionSel) return;
+            regionSel.addEventListener('change', () => {
+                const region = regionSel.value;
+                villeSel.innerHTML = '<option value="">Sélectionnez une ville</option>';
+                if (region && localitesTogo[region]) {
+                    localitesTogo[region].villes.forEach(v => { villeSel.innerHTML += `<option value="${v}">${v}</option>`; });
+                }
+                communeSel.innerHTML = '<option value="">Sélectionnez une commune</option>';
+            });
+            villeSel.addEventListener('change', () => {
+                const region = regionSel.value;
+                const ville = villeSel.value;
+                communeSel.innerHTML = '<option value="">Sélectionnez une commune</option>';
+                if (region && localitesTogo[region]?.communes[ville]) {
+                    localitesTogo[region].communes[ville].forEach(c => { communeSel.innerHTML += `<option value="${c}">${c}</option>`; });
+                }
+            });
+        }
+
+        function getServiceLabel(s) {
+            const labels = { moto: "Moto", tricycle: "Tricycle", bagage: "Taxi Bagage", commun: "Transport Commun" };
+            return labels[s] || s;
+        }
+
+        // ==================== ONGLETS ====================
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+                localStorage.setItem('activeTab', btn.dataset.tab);
             });
         });
-
         document.querySelectorAll('[data-tab-link]').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const tabId = link.getAttribute('data-tab-link');
-                switchTab(tabId);
+                const tabId = link.dataset.tabLink;
+                document.querySelector(`.tab-btn[data-tab="${tabId}"]`).click();
             });
         });
-
         const savedTab = localStorage.getItem('activeTab');
-        if (savedTab && document.getElementById(savedTab)) {
-            switchTab(savedTab);
+        if (savedTab) document.querySelector(`.tab-btn[data-tab="${savedTab}"]`)?.click();
+
+        // ==================== RÉSERVATION ====================
+        function filterDrivers() {
+            const region = document.getElementById('res_region').value;
+            const ville = document.getElementById('res_ville').value;
+            const commune = document.getElementById('res_commune').value;
+            const availableOnly = document.getElementById('availableOnly').checked;
+            const service = document.querySelector('.service-select-btn.active')?.dataset.service || 'moto';
+            
+            let filtered = transporteurs.filter(d => d.type === service);
+            if (region) filtered = filtered.filter(d => d.region === region);
+            if (ville) filtered = filtered.filter(d => d.ville === ville);
+            if (commune) filtered = filtered.filter(d => d.commune === commune);
+            if (availableOnly) filtered = filtered.filter(d => d.disponible);
+            
+            const container = document.getElementById('drivers-list');
+            if (filtered.length === 0) { container.innerHTML = '<p style="text-align:center">Aucun transporteur trouvé</p>'; return; }
+            container.innerHTML = filtered.map(d => `
+                <div class="driver-card" data-driver='${JSON.stringify(d)}'>
+                    <div class="driver-header"><span class="driver-type">${getServiceLabel(d.type)}</span><span>${d.ville}</span></div>
+                    <div class="driver-body">
+                        <div class="driver-info"><div class="driver-avatar"><i class="fas fa-user"></i></div>
+                        <div class="driver-details"><h3>${d.nom}</h3><div class="driver-rating">★★★★☆</div><div class="driver-price">${d.prixKm} FCFA/km</div></div></div>
+                        <div class="driver-contact"><button class="btn book-driver-btn">Réserver</button></div>
+                    </div>
+                </div>
+            `).join('');
+            document.querySelectorAll('.book-driver-btn').forEach((btn, i) => {
+                btn.addEventListener('click', () => {
+                    const card = btn.closest('.driver-card');
+                    selectedDriverForBooking = JSON.parse(card.dataset.driver);
+                    document.getElementById('selectedDriverName').value = selectedDriverForBooking.nom;
+                    document.getElementById('bookingForm').classList.remove('hidden');
+                    updatePrice();
+                });
+            });
         }
 
-        // Animation au scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+        function updatePrice() {
+            if (!selectedDriverForBooking) return;
+            const dist = parseFloat(document.getElementById('distance').value) || 0;
+            const total = dist * selectedDriverForBooking.prixKm * 1.1;
+            document.getElementById('totalPrice').textContent = Math.round(total);
+        }
 
-        document.querySelectorAll('.feature-card, .service-card, .step, .user-card').forEach(el => {
-            observer.observe(el);
+        document.getElementById('distance')?.addEventListener('input', updatePrice);
+        document.getElementById('res_region')?.addEventListener('change', filterDrivers);
+        document.getElementById('res_ville')?.addEventListener('change', filterDrivers);
+        document.getElementById('res_commune')?.addEventListener('change', filterDrivers);
+        document.getElementById('availableOnly')?.addEventListener('change', filterDrivers);
+        document.querySelectorAll('.service-select-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.service-select-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterDrivers();
+            });
         });
+        initLocationSelectors('res');
+        filterDrivers();
+
+        document.getElementById('confirmBookingBtn')?.addEventListener('click', () => {
+            if (!selectedDriverForBooking) return;
+            const msg = `🚗 NOUVELLE RÉSERVATION\n\nClient: ${document.getElementById('clientName').value}\nTéléphone: ${document.getElementById('clientPhone').value}\nDépart: ${document.getElementById('pickupLocation').value}\nDestination: ${document.getElementById('destination').value}\nDistance: ${document.getElementById('distance').value} km\nTotal: ${document.getElementById('totalPrice').textContent} FCFA\nTransporteur: ${selectedDriverForBooking.nom}`;
+            window.open(`https://wa.me/${selectedDriverForBooking.telephone.replace(/\D/g, '')}?text=${encodeURIComponent(msg)}`, '_blank');
+            showNotification('Réservation envoyée!');
+            document.getElementById('bookingForm').classList.add('hidden');
+        });
+        document.getElementById('cancelBookingBtn')?.addEventListener('click', () => {
+            document.getElementById('bookingForm').classList.add('hidden');
+            selectedDriverForBooking = null;
+        });
+
+        // ==================== ESPACE CONDUCTEUR ====================
+        const driversDB = { "KOLA Maniwah": { id: "KOLA Maniwah", password: "taxi123", name: "KOLA Maniwah", service: "Moto", region: "Kara", phone: "+22892871605" } };
+        
+        document.getElementById('conducteurLoginBtn')?.addEventListener('click', () => {
+            const id = document.getElementById('driverLoginId').value;
+            const pwd = document.getElementById('driverLoginPwd').value;
+            if (driversDB[id] && driversDB[id].password === pwd) {
+                currentDriver = driversDB[id];
+                localStorage.setItem('currentDriver', JSON.stringify(currentDriver));
+                document.getElementById('conducteur-login').classList.add('hidden');
+                document.getElementById('conducteur-dashboard').classList.remove('hidden');
+                document.getElementById('dashboardDriverName').textContent = currentDriver.name;
+                showNotification('Connexion réussie');
+            } else showNotification('Identifiant ou mot de passe incorrect', 'error');
+        });
+        document.getElementById('conducteurLogoutBtn')?.addEventListener('click', () => {
+            currentDriver = null;
+            localStorage.removeItem('currentDriver');
+            document.getElementById('conducteur-login').classList.remove('hidden');
+            document.getElementById('conducteur-dashboard').classList.add('hidden');
+        });
+
+        // Sous-onglets conducteur
+        document.querySelectorAll('.sub-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.sub-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(`subtab-${tab.dataset.subtab}`).classList.add('active');
+            });
+        });
+
+        let currentTrip = null;
+        document.getElementById('startTripBtn')?.addEventListener('click', () => {
+            const clientName = document.getElementById('tripClientName').value;
+            const clientPhone = document.getElementById('tripClientPhone').value;
+            const destination = document.getElementById('tripDestination').value;
+            if (!clientName || !destination) { showNotification('Remplissez les champs obligatoires', 'error'); return; }
+            currentTrip = { clientName, clientPhone, destination, startTime: new Date(), distance: 0, fare: 0 };
+            document.getElementById('activeClientName').textContent = clientName;
+            document.getElementById('activeDestination').textContent = destination;
+            document.getElementById('activeTripPanel').classList.remove('hidden');
+            const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}&travelmode=driving`;
+            window.open(mapsUrl, '_blank');
+            showNotification('Trajet démarré!');
+        });
+        document.getElementById('endTripBtn')?.addEventListener('click', () => {
+            if (!currentTrip) return;
+            const priceKm = parseInt(document.getElementById('driverPriceKm').value) || 150;
+            const distance = parseFloat(prompt("Distance parcourue (km):", "5")) || 0;
+            const total = distance * priceKm * 1.1;
+            const receipt = { id: Date.now(), driver: currentDriver?.name, client: currentTrip.clientName, destination: currentTrip.destination, distance, total, date: new Date().toISOString() };
+            receipts.unshift(receipt);
+            localStorage.setItem('receipts', JSON.stringify(receipts));
+            tripHistory.unshift({ ...currentTrip, distance, total, endTime: new Date() });
+            localStorage.setItem('tripHistory', JSON.stringify(tripHistory));
+            document.getElementById('activeTripPanel').classList.add('hidden');
+            document.getElementById('tripDistance').textContent = distance;
+            document.getElementById('tripFare').textContent = Math.round(total);
+            showNotification(`Trajet terminé. Total: ${Math.round(total)} FCFA`);
+            currentTrip = null;
+            displayHistoryAndReceipts();
+        });
+
+        function displayHistoryAndReceipts() {
+            const historyDiv = document.getElementById('tripHistoryList');
+            const receiptsDiv = document.getElementById('receiptsList');
+            if (historyDiv) historyDiv.innerHTML = tripHistory.length ? tripHistory.map(t => `<div style="border-bottom:1px solid #ddd; padding:8px;"><strong>${t.clientName}</strong> → ${t.destination}<br>${t.distance}km - ${Math.round(t.total)} FCFA<br><small>${new Date(t.startTime).toLocaleString()}</small></div>`).join('') : '<p>Aucun historique</p>';
+            if (receiptsDiv) receiptsDiv.innerHTML = receipts.length ? receipts.map(r => `<div style="border-bottom:1px solid #ddd; padding:8px;"><strong>${r.client}</strong><br>${r.destination}<br>${r.distance}km - ${Math.round(r.total)} FCFA<br><small>${new Date(r.date).toLocaleString()}</small></div>`).join('') : '<p>Aucun reçu</p>';
+        }
+        displayHistoryAndReceipts();
+
+        // ==================== INSCRIPTION ====================
+        initLocationSelectors('insc');
+        document.getElementById('submitInscriptionBtn')?.addEventListener('click', () => {
+            const data = {
+                nom: document.getElementById('inscNom').value,
+                phone: document.getElementById('inscPhone').value,
+                email: document.getElementById('inscEmail').value,
+                service: document.getElementById('inscService').value,
+                vehicle: document.getElementById('inscVehicle').value,
+                price: document.getElementById('inscPrice').value,
+                experience: document.getElementById('inscExperience').value,
+                availability: document.getElementById('inscAvailability').value,
+                region: document.getElementById('inscRegion').value,
+                ville: document.getElementById('inscVille').value
+            };
+            if (!data.nom || !data.phone || !data.vehicle || !data.price || !data.region || !data.ville) {
+                showNotification('Veuillez remplir tous les champs obligatoires', 'error'); return;
+            }
+            if (!document.getElementById('inscTerms').checked) { showNotification('Acceptez les conditions', 'error'); return; }
+            const msg = `🚗 NOUVELLE INSCRIPTION CONDUCTEUR\n\nNom: ${data.nom}\nTéléphone: ${data.phone}\nEmail: ${data.email}\nService: ${getServiceLabel(data.service)}\nVéhicule: ${data.vehicle}\nPrix/km: ${data.price} FCFA\nExpérience: ${data.experience} ans\nZone: ${data.region} - ${data.ville}`;
+            window.open(`https://wa.me/22892871605?text=${encodeURIComponent(msg)}`, '_blank');
+            showNotification('Inscription envoyée avec succès!');
+            document.getElementById('driverForm')?.reset();
+        });
+
+        // ==================== ANIMATIONS ====================
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.feature-card, .service-card, .step, .user-card, .driver-card').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
